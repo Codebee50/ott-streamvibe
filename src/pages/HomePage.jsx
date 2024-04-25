@@ -8,7 +8,6 @@ import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
 
 const HomePage = () => {
-  console.log(window.innerWidth);
   return (
     <Fragment>
       <section className="w-full max-container bg-page-black relative">

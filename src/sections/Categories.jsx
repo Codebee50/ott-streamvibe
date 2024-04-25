@@ -6,46 +6,56 @@ import TextSm from "../components/TextSm";
 
 const Categories = () => {
   const [genreList, setGenreList] = useState([]);
-  //   const [movieList, setMovieList] = useState([]);
   const [transformedGenreList, setTransformedGenreList] = useState([]);
+  const [moviesList, setMoviesList] = useState([]);
 
-  //   function getjson(url, errorMsg = "Something went wrong") {
-  //     return fetch(url).then((response) => {
-  //       if (!response.ok) throw new Error(`${errorMsg}: ${response.status}`);
-  //       return response.json();
-  //     });
-  //   }
+  function getjson(url, errorMsg = "Something went wrong") {
+    return fetch(url).then((response) => {
+      if (!response.ok) throw new Error(`${errorMsg}: ${response.status}`);
+      return response.json();
+    });
+  }
 
-  //   async function fetchMoviesAndGenres() {
-  //     try {
-  //       const data = await Promise.all([
-  //         getjson(
-  //           `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
-  //             import.meta.env.VITE_TMDP_API_TOKEN
-  //           }`
-  //         ),
-  //         getjson(
-  //           `https://api.themoviedb.org/3/genre/movie/list?api_key=${
-  //             import.meta.env.VITE_TMDP_API_TOKEN
-  //           }`
-  //         ),
-  //       ]);
+  const getMoviesList = useCallback(async () => {
+    const genreIds = genreList.map((genre) => genre.id);
+    const movies = [];
+    if (genreIds.length > 0) {
+      const data = await Promise.all([
+        getjson(
+          `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
+            import.meta.env.VITE_TMDP_API_TOKEN
+          }&with_genres=${genreIds.join("|")}&page=1`
+        ),
+        getjson(
+          `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
+            import.meta.env.VITE_TMDP_API_TOKEN
+          }&with_genres=${genreIds.join("|")}&page=2`
+        ),
+        getjson(
+          `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
+            import.meta.env.VITE_TMDP_API_TOKEN
+          }&with_genres=${genreIds.join("|")}&page=3`
+        ),
+      ]);
 
-  //       setMovieList(data[0].results);
-  //       setGenreList(data[1].genres);
-  //       transformGenreList();
-  //     } catch (err) {
-  //       alert("Error fetching data :(");
-  //       console.log("Error fetching data");
-  //     }
-  //   }
+      data.forEach((item) => {
+        item.results.forEach((item) => {
+          movies.push(item);
+        });
+      });
+      setMoviesList(movies);
+    }
+  }, [genreList]);
+
+  useEffect(() => {
+    getMoviesList();
+  }, [getMoviesList]);
 
   async function getImageLinks(genreId, genreName) {
     let foundNum = 0;
     let imageLInks = [];
 
     if (foundNum < 4) {
-      console.log("found num<4");
       const responose = await fetch(
         `https://api.themoviedb.org/3/discover/movie?api_key=${
           import.meta.env.VITE_TMDP_API_TOKEN
@@ -54,7 +64,6 @@ const Categories = () => {
 
       if (responose.ok) {
         const movieGenre = await responose.json();
-        console.log("gern", movieGenre);
         movieGenre.results.forEach((movie) => {
           if (foundNum >= 4) {
             return;
@@ -73,6 +82,25 @@ const Categories = () => {
       name: genreName,
       imageLinks: imageLInks,
     };
+  }
+
+  function fechPosterImagesByGenreId(genreId) {
+    const foundPosters = [];
+    moviesList.forEach((movie) => {
+      if (foundPosters.length >= 4) {
+        return;
+      }
+      if (movie.genre_ids.includes(genreId)) {
+        foundPosters.push(movie.poster_path);
+      }
+    });
+
+    if (foundPosters.length < 4) {
+      for (let i = foundPosters.length; i < 4; i++) {
+        foundPosters.push("empty");
+      }
+    }
+    return foundPosters;
   }
 
   function fetchGenres() {
@@ -102,10 +130,6 @@ const Categories = () => {
     fetchGenres();
   }, []);
 
-  useEffect(() => {
-    transformGenreList();
-  }, [transformGenreList]);
-
   return (
     <section className="w-full min-h-[2vh] bg-page-black padding-x max-container flex flex-col pt-[35vh] pb-[20vh]">
       <div className="w-full flex flex-row items-center justify-between ">
@@ -120,12 +144,13 @@ const Categories = () => {
       </div>
 
       <div className="mt-10 w-full flex flex-row overflow-x-scroll gap-3 no-scrollbar">
-        {transformedGenreList.map((genreItem) => {
+        {genreList.map((genreItem) => {
+          const posterPaths = fechPosterImagesByGenreId(genreItem.id);
           return (
             <MovieCollectionCard
               key={genreItem.id}
               name={genreItem.name}
-              imageLinks={genreItem.imageLinks}
+              imageLinks={posterPaths}
             />
           );
         })}

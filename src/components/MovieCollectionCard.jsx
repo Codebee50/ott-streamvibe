@@ -1,4 +1,5 @@
 import { HiArrowRight } from "react-icons/hi";
+import defaultbg from "../assets/images/defaultbg.png";
 // import Imagehero from '../assets/heroimages/Imagehero.png';
 // import Imagehero1 from '../assets/heroimages/Imagehero-1.png';
 // import Imagehero2 from '../assets/heroimages/Imagehero-2.png';
@@ -11,7 +12,11 @@ const MovieCollectionCard = (props) => {
         {props.imageLinks.map((imageLink, index) => (
           <img
             key={`img-${props.name}-${index}`}
-            src={`https://image.tmdb.org/t/p/w500${imageLink}`}
+            src={
+              imageLink !== "empty"
+                ? `https://image.tmdb.org/t/p/w500${imageLink}`
+                : defaultbg
+            }
             alt=""
             className="object-cover object-center w-[115px] h-[120px] rounded-lg"
             width={115}
