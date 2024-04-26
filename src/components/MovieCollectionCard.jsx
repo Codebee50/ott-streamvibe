@@ -28,6 +28,7 @@ const MovieCollectionCard = (props) => {
             <img src={Imagehero2} alt="" />
             <img src={Imagehero3} alt="" /> */}
       </div>
+      
       <div className="flex flex-row items-center justify-between mt-2">
         <p className="text-white font-manrope">{props.name}</p>
         <HiArrowRight fill="#ffffff" width={30} height={30} />

@@ -3,6 +3,7 @@ import MovieCollectionCard from "../components/MovieCollectionCard";
 import SlideIndicator from "../components/SlideIndicator";
 import TextL from "../components/TextL";
 import TextSm from "../components/TextSm";
+import SolidSlideIndicator from "../components/SolidSlideIndicator";
 
 const Categories = () => {
   const [genreList, setGenreList] = useState([]);
@@ -10,10 +11,7 @@ const Categories = () => {
   const categoriesContainerRef = useRef();
   const [scrollIndex, setScrollIndex] = useState(0);
   const [scrollLeft, setSCrollLeft] = useState(0);
-  const [nextPerfectClip, setNextPerfectLip] = useState(0);
-
-  let lastPerfect = 0;
-
+  
   function getjson(url, errorMsg = "Something went wrong") {
     return fetch(url).then((response) => {
       if (!response.ok) throw new Error(`${errorMsg}: ${response.status}`);
@@ -92,6 +90,7 @@ const Categories = () => {
     categoriesContainerRef.current.scrollLeft -=
       categoriesContainerRef.current.getBoundingClientRect().width;
 
+    // 😝😝
     // if (scrollIndex - 1 >= 0) {
     //   setScrollIndex((prevIndex) => prevIndex - 1);
     // }
@@ -135,6 +134,10 @@ const Categories = () => {
     return slideRatio || null;
   }
 
+  function getPercentageScrolled() {
+    return (scrollLeft / (genreList.length * 236)) * 100;
+  }
+
   return (
     <section className="w-full min-h-[2vh] bg-page-black padding-x max-container flex flex-col pt-[35vh] pb-[20vh]">
       <div className="w-full flex flex-row items-center justify-between ">
@@ -144,12 +147,14 @@ const Categories = () => {
         </div>
 
         <div>
-          <SlideIndicator
-            onRightClick={rightSlideHandler}
-            onLeftClick={leftSlideHandler}
-            slideRatio={getSlideRatio()}
-            scrollIndex={scrollIndex}
-          />
+          {!(window.innerWidth < 820) && (
+            <SlideIndicator
+              onRightClick={rightSlideHandler}
+              onLeftClick={leftSlideHandler}
+              slideRatio={getSlideRatio()}
+              scrollIndex={scrollIndex}
+            />
+          )}
         </div>
       </div>
 
@@ -169,6 +174,15 @@ const Categories = () => {
           );
         })}
       </div>
+
+        {
+          window.innerWidth < 820 && (
+            <div className="mt-7 w-full flex items-center justify-center">
+            <SolidSlideIndicator value={getPercentageScrolled()} />
+          </div>
+          )
+        }
+   
     </section>
   );
 };

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -11,28 +11,36 @@
   scroll-behavior: smooth;
 }
 
-@layer components{
+@layer components {
+  .max-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 
-    .max-container {
-      max-width: 1440px;
-      margin: 0 auto;
-    }
+  .centered-element {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-    .centered-element {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
-    .no-scrollbar::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }
-      
+  .solid-indicator::-webkit-progress-bar {
+    background-color: #333333;
+  }
+
+  .solid-indicator::-webkit-progress-value {
+    border-radius: 7px;
+    background-color: #E50000;
+  }
+
 }
 
-@layer utilities{
+@layer utilities {
   .padding-x {
     @apply lg:px-16 px-6;
   }
