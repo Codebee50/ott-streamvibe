@@ -23,7 +23,7 @@ const FaqItem = (props) => {
     }
   return (
     <div className={`flex flex-col transition-all ease-in-out duration-300`} onClick={faqClickHandler}>
-        <div className={`flex flex-row gap-3 justify-between ${props.open?'':''}`}>
+        <div className={`flex flex-row gap-3 justify-between ${props.open?'items-start':'items-center'} smooth`}>
             <div className={`flex flex-row gap-3 ${props.open?'items-start':'items-center'}`}>
                 <div className="bg-black12 px-4 py-[0.9rem] rounded-md shrink-0">
                     <p className="text-white font-manrope text-[0.85rem]">0{props.index}</p>
@@ -31,7 +31,7 @@ const FaqItem = (props) => {
 
                 <div className='flex flex-col'>
                     <p className='text-white font-manrope font-medium text-[0.9rem]'>{props.question}</p>
-                    <div className={`overflow-y-hidden flex transition-height ease-linear overflow-hidden duration-300 `} ref={answerContainer}>
+                    <div className={`overflow-y-hidden flex transition-height ease-linear overflow-hidden duration-300`} ref={answerContainer}>
                         <p className='text-gray60 mt-2 font-manrope text-[0.85rem] leading-6'>{props.answer}</p>
                     </div>
                 </div>
