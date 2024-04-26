@@ -10,6 +10,7 @@ export default {
         'page-black': '#1E1E1E',
         'trans-1': 'rgba(0,0,0,0.1)',
         'trans-2': 'rgba(0,0,0,0.7)',
+        'trans-red': 'rgb(229, 0, 0, 0.1)',
         'black06': '#0F0F0F',
         'gray75': '#BFBFBF',
         'gray60': '#999999',
@@ -27,7 +28,8 @@ export default {
         's-1': '320px',
         'laptop': '1440px',
         'mobile': '390px',
-        'tablet': '820px'
+        'tablet': '820px',
+        'mobilelg': '530px'
       },
       fontFamily:{
         'manrope': ['Manrope', 'sans-serif']

@@ -6,6 +6,7 @@ import { vibeBack } from "../assets/icons";
 import Nav from "../components/Nav";
 import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
+import ScreensShowcase from "../sections/ScreensShowcase";
 
 const HomePage = () => {
   return (
@@ -63,6 +64,7 @@ const HomePage = () => {
       </section>
 
       <Categories></Categories>
+      <ScreensShowcase/>
     </Fragment>
   );
 };

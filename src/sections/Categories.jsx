@@ -146,7 +146,7 @@ const Categories = () => {
   }
 
   return (
-    <section className="w-full min-h-[2vh] bg-page-black padding-x max-container flex flex-col pt-[35vh] pb-[20vh]">
+    <section className="w-full bg-page-black padding-x max-container flex flex-col pt-[35vh] pb-[10vh] sm:pb-[15vh]">
       <div className="w-full flex flex-row items-center justify-between ">
         <div className="flex flex-col items-start">
           <TextL text="Explore our wide variety of categories" />
