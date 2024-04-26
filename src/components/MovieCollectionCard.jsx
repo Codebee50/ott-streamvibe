@@ -8,7 +8,8 @@ import defaultbg from "../assets/images/defaultbg.png";
 const MovieCollectionCard = (props) => {
   return (
     <div className="bg-black10 h-max w-max p-4 rounded-lg">
-      <div className="w-[235px] h-[252px] rounded-lg grid grid-cols-2 gap-[2px]">
+      <div className="w-[235px] h-[252px] rounded-lg relative flex">
+        <div className="w-full h-full grid grid-cols-2 gap-[2px]">
         {props.imageLinks.map((imageLink, index) => (
           <img
             key={`img-${props.name}-${index}`}
@@ -23,10 +24,11 @@ const MovieCollectionCard = (props) => {
             height={120}
           />
         ))}
-        {/* <img src={Imagehero} alt="" className="object-cover object-center" />
-            <img src={Imagehero1} alt="" />
-            <img src={Imagehero2} alt="" />
-            <img src={Imagehero3} alt="" /> */}
+        </div>
+
+        <div className="absolute w-full h-full z-10 bg-gradient-to-t from-page-black"></div>
+     
+
       </div>
       
       <div className="flex flex-row items-center justify-between mt-2">
