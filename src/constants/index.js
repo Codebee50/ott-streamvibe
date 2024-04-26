@@ -1,5 +1,23 @@
 import { gamingConsole, laptop, smartPhone, tablet, tv, vr } from "../assets/icons"
 
+export const planList =[
+    {
+        'name': 'Basic Plan',
+        'description': 'Enjoy an extensive library of movies and shows, featuring a range of content, including recently released titles.',
+        'monthPrice': '9.99',
+    },
+    {
+        'name': 'Standard Plan',
+        'description': 'Access to a wider selection of movies and shows, including most new releases and exclusive content',
+        'monthPrice': '12.99',
+    },
+    {
+        'name': 'Premium Plan',
+        'description': 'Access to a widest selection of movies and shows, including all new releases and Offline Viewing',
+        'monthPrice': '14.99',
+    },
+]
+
 export const faqList = [
     {
         'question': 'What is StreamVibe?',

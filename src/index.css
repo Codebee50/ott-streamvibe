@@ -40,7 +40,10 @@
 
   .smooth{
     transition: all 1s ease-in-out;
-    
+  }
+
+  .grid-auto-con{
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
 }

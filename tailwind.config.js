@@ -17,7 +17,9 @@ export default {
         'black10': "#1A1A1A",
         'red45': '#E50000',
         'black20': '#333333',
-        'black12': '#1F1F1F'
+        'black12': '#1F1F1F',
+        'black08': '#141414',
+        'strokeBlack': '#262626'
       },
 
       gridTemplateColumns:{
