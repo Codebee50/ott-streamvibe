@@ -7,6 +7,7 @@ import Nav from "../components/Nav";
 import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
 import ScreensShowcase from "../sections/ScreensShowcase";
+import FAQSection from "../sections/FAQSection";
 
 const HomePage = () => {
   return (
@@ -65,6 +66,7 @@ const HomePage = () => {
 
       <Categories></Categories>
       <ScreensShowcase/>
+      <FAQSection/>
     </Fragment>
   );
 };

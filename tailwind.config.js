@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors:{
-        'page-black': '#1E1E1E',
+        'page-black': '#141414',
         'trans-1': 'rgba(0,0,0,0.1)',
         'trans-2': 'rgba(0,0,0,0.7)',
         'trans-red': 'rgb(229, 0, 0, 0.1)',
@@ -16,7 +16,8 @@ export default {
         'gray60': '#999999',
         'black10': "#1A1A1A",
         'red45': '#E50000',
-        'black20': '#333333'
+        'black20': '#333333',
+        'black12': '#1F1F1F'
       },
 
       gridTemplateColumns:{
