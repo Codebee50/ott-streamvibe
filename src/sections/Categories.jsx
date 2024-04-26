@@ -22,6 +22,8 @@ const Categories = () => {
   const getMoviesList = useCallback(async () => {
     const genreIds = genreList.map((genre) => genre.id);
     const movies = [];
+
+    console.log(genreIds.join('|'))
     if (genreIds.length > 0) {
       const data = await Promise.all([
         getjson(
@@ -38,6 +40,11 @@ const Categories = () => {
           `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
             import.meta.env.VITE_TMDP_API_TOKEN
           }&with_genres=${genreIds.join("|")}&page=3`
+        ),
+        getjson(
+          `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
+            import.meta.env.VITE_TMDP_API_TOKEN
+          }&with_genres=99|10402|10770&page=5`
         ),
       ]);
 
