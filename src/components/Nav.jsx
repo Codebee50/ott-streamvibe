@@ -24,7 +24,7 @@ const Nav = (props) => {
             <img src={bell} alt=""  width={30} className="cursor-pointer"/>
         </div>
 
-        <div className="tablet:hidden">
+        <div className="tablet:hidden" onClick={props.onOpenNav}>
             <img src={hamburger} alt="" />
         </div>
     </header>

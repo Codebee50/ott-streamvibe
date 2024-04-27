@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Fragment } from "react";
 import Categories from "../sections/Categories";
 import { heroBackgroundImageList } from "../assets/heroimages";
@@ -11,12 +12,30 @@ import FAQSection from "../sections/FAQSection";
 import PlanShowcaseSection from "../sections/PlanShowcaseSection";
 import StartFreeTrialSection from "../sections/StartFreeTrialSection";
 import Footer from "../sections/Footer";
+import { Drawer } from 'antd';
+
+
 
 const HomePage = () => {
   const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5)
+  const [navOpen, setNavOpen] = useState(false);
+
+  const showNavDrawer = ()=>{
+    setNavOpen(true)
+  }
+
+  const closeNavDrawer =() => {
+    setNavOpen(false)
+  }
 
   return (
     <Fragment>
+      <Drawer title="Basic Drawer" onClose={closeNavDrawer} open={navOpen} className="bg-page-black">
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
+
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
           {shuffled.map((image, index) => (
@@ -39,7 +58,7 @@ const HomePage = () => {
 
         <div className="absolute w-full z-10 top-0 flex flex-col">
           <div className="w-full h-[30vh] bg-gradient-to-b from-page-black to-trans-1">
-            <Nav navLinks={navLinks} page="Home" />
+            <Nav navLinks={navLinks} page="Home" onOpenNav={showNavDrawer} />
           </div>
 
           <div className="w-full min-h-[40vh] bg-gradient-to-t from-page-black via-trans-2 from-20%  to-trans-1 flex flex-col items-center p-2">

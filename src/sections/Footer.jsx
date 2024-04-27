@@ -2,9 +2,6 @@ import LinkFlex from "../components/LinkFlex"
 import { footerItems } from "../constants"
 import { IoLogoFacebook, IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoTwitter } from "react-icons/io";
-import TextSm from "../components/TextSm";
-
-
 
 const Footer = () => {
   return (
