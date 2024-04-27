@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react"
+import { Fragment, useEffect } from "react";
 import { useState } from "react";
 import { heroBackgroundImageList } from "../assets/heroimages";
 // import bigIcon from '../assets/icons/big-icon.png'
@@ -6,32 +6,54 @@ import { vibeBack } from "../assets/icons";
 import Nav from "../components/Nav";
 import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
-import { Drawer } from 'antd';
+import { Drawer } from "antd";
+import { IoMdClose } from "react-icons/io";
 
 
 const Hero = () => {
-    const [shuffledList, setShuffledList] = useState([])
+  const [shuffledList, setShuffledList] = useState([]);
 
-    useEffect(()=>{
-        const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5)
-        setShuffledList(shuffled)
-    }, [])
+  useEffect(() => {
+    const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5);
+    setShuffledList(shuffled);
+  }, []);
 
-    const [navOpen, setNavOpen] = useState(false);
-  
-    const showNavDrawer = ()=>{
-      setNavOpen(true)
-    }
-  
-    const closeNavDrawer =() => {
-      setNavOpen(false)
-    }
+  const [navOpen, setNavOpen] = useState(false);
+
+  const showNavDrawer = () => {
+    setNavOpen(true);
+  };
+
+  const closeNavDrawer = () => {
+    setNavOpen(false);
+  };
   return (
     <Fragment>
-           <Drawer title="Basic Drawer" onClose={closeNavDrawer} open={navOpen} className="bg-page-black">
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Drawer
+        onClose={closeNavDrawer}
+        open={navOpen}
+        title="OTT Streamvibe"
+        style={{ backgroundColor: "#0F0F0F" }}
+        headerStyle={{ display: "none" }}
+      >
+        <div className="w-full flex flex-row justify-end">
+        <div onClick={closeNavDrawer} className="w-max bg-black10 text-white cursor-pointer p-3 flex shrink-0 rounded-md border-[3px] border-strokeBlack">
+            <IoMdClose size={'1.5em'}/>
+        </div>
+        </div>
+   
+        <ul className="flex flex-col gap-10 h-full mt-10 ">
+          {navLinks.map((navLink) => (
+            <li key={navLink.label}>
+              <a
+                href={navLink.link}
+                className={`focus:text-red45 font-manrope text-gray75 text-[0.9rem] p-3 rounded-[0.5rem]`}
+              >
+                {navLink.label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </Drawer>
 
       <section className="w-full max-container bg-page-black relative">
@@ -85,7 +107,7 @@ const Hero = () => {
         </div>
       </section>
     </Fragment>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

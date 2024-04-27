@@ -15,7 +15,6 @@ const HomePage = () => {
 
   return (
     <Fragment>
-   
       <Hero/>
       <Categories></Categories>
       <ScreensShowcase/>
