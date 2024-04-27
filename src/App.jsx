@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import MoviesAndShowsPage from "./pages/MoviesAndShowsPage";
 
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<HomePage/>}/>
+        <Route path="/moviesandshows" element={<MoviesAndShowsPage/>}/>
       </Routes>
     </BrowserRouter>
   )

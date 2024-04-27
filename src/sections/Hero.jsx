@@ -6,20 +6,20 @@ import { vibeBack } from "../assets/icons";
 import Nav from "../components/Nav";
 import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
-import { Drawer } from "antd";
-import { IoMdClose } from "react-icons/io";
 import { motion } from "framer-motion";
+import NavDrawer from "../components/NavDrawer";
 
 
 const Hero = () => {
   const [shuffledList, setShuffledList] = useState([]);
+  const [navOpen, setNavOpen] = useState(false);
+
 
   useEffect(() => {
     const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5);
     setShuffledList(shuffled);
   }, []);
 
-  const [navOpen, setNavOpen] = useState(false);
 
   const showNavDrawer = () => {
     setNavOpen(true);
@@ -45,32 +45,7 @@ const Hero = () => {
   
   return (
     <Fragment>
-      <Drawer
-        onClose={closeNavDrawer}
-        open={navOpen}
-        title="OTT Streamvibe"
-        style={{ backgroundColor: "#0F0F0F" }}
-        headerStyle={{ display: "none" }}
-      >
-        <div className="w-full flex flex-row justify-end">
-        <div onClick={closeNavDrawer} className="w-max bg-black10 text-white cursor-pointer p-3 flex shrink-0 rounded-md border-[3px] border-strokeBlack">
-            <IoMdClose size={'1.5em'}/>
-        </div>
-        </div>
-   
-        <ul className="flex flex-col gap-10 h-full mt-10 ">
-          {navLinks.map((navLink) => (
-            <li key={navLink.label}>
-              <a
-                href={navLink.link}
-                className={`focus:text-red45 font-manrope text-gray75 text-[0.9rem] p-3 rounded-[0.5rem]`}
-              >
-                {navLink.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </Drawer>
+      <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks}/>
 
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">

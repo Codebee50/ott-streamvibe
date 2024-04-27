@@ -162,11 +162,11 @@ export const faqList = [
 export const navLinks =[
     {
         'label': 'Home',
-        'link': '#'
+        'link': '/'
     },
     {
         'label': 'Movies & Shows',
-        'link': '#'
+        'link': '/moviesandshows'
     },
     {
         'label': 'Support',
