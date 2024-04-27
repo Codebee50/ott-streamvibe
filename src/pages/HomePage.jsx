@@ -9,6 +9,7 @@ import { playIcon } from "../assets/icons";
 import ScreensShowcase from "../sections/ScreensShowcase";
 import FAQSection from "../sections/FAQSection";
 import PlanShowcaseSection from "../sections/PlanShowcaseSection";
+import StartFreeTrialSection from "../sections/StartFreeTrialSection";
 
 const HomePage = () => {
   return (
@@ -16,7 +17,6 @@ const HomePage = () => {
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
           {heroBackgroundImageList.map((image, index) => (
-            // <img src={image} key={index} alt="" />
             <div
               className="h-[110px] breakcon:h-[130px] rounded-md"
               key={index}
@@ -69,6 +69,7 @@ const HomePage = () => {
       <ScreensShowcase/>
       <FAQSection/>
       <PlanShowcaseSection/>
+      <StartFreeTrialSection/>
     </Fragment>
   );
 };

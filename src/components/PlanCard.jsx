@@ -8,7 +8,7 @@ const PlanCard = (props) => {
         <p className="mt-3 text-gray60 font-manrope text-[0.9rem]">{props.description}</p>
 
         <div className="mt-10 flex flex-row items-end gap-1">
-            <p className="font-manrope text-3xl text-white font-semibold">{`$${props.monthPrice}`}</p>
+            <p className="font-manrope text-3xl text-white font-semibold">{`$${(props.monthPrice * props.buff).toFixed(2)}`}</p>
             <p className="font-manrope text-gray60">/{props.term}</p>
         </div>
 

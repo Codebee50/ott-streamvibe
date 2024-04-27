@@ -4,7 +4,7 @@ const Toggler = (props) => {
             <ul className="flex flex-row items-center gap-3 ">
                 {
                     props.options.map((option)=>(
-                        <li key={option}><a className={`font-manrope text-gray60 text-[0.9rem] p-3 rounded-[0.5rem] cursor-pointer ${props.selected=== option && 'bg-black10 text-white'}`}>{option}</a></li>
+                        <li key={option} onClick={props.onToggle.bind(null,option)} ><a className={`font-manrope text-gray60 text-[0.9rem] p-3 rounded-[0.5rem] cursor-pointer ${props.selected=== option && 'bg-black10 text-white'}`}>{option}</a></li>
                     ))
                 }
             </ul>
