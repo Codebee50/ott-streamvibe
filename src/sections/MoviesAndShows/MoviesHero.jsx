@@ -41,13 +41,13 @@ const MoviesHero = () => {
           <div className="w-full h-[70vh] sm:h-[80vh] relative">
             <img
               className="w-full h-full bg-black12 rounded-lg object-center object-cover"
-              src={largeImages[0]}
+              src={largeImages[1]}
               alt=""
             />
 
-            <div className="absolute w-full h-full bg-gradient-to-t from-page-black top-0 flex flex-col items-center justify-end">
+            <div className="absolute w-full h-full bg-gradient-to-t from-page-black from-10% top-0 flex flex-col items-center justify-end">
               <h1 className="text-white font-bold font-manrope text-3xl breakcon:text-4xl mt-[35vh] text-center ">
-                Avengers : Endgame
+                Dune
               </h1>
 
               <p className="w-[90%] text-center mt-3 text-gray60 font-manrope text-[0.95rem] line-clamp-3">
