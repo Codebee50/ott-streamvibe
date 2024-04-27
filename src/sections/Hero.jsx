@@ -9,17 +9,14 @@ import { playIcon } from "../assets/icons";
 import { motion } from "framer-motion";
 import NavDrawer from "../components/NavDrawer";
 
-
 const Hero = () => {
   const [shuffledList, setShuffledList] = useState([]);
   const [navOpen, setNavOpen] = useState(false);
-
 
   useEffect(() => {
     const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5);
     setShuffledList(shuffled);
   }, []);
-
 
   const showNavDrawer = () => {
     setNavOpen(true);
@@ -30,22 +27,20 @@ const Hero = () => {
   };
 
   const getRandomX = () => {
-    return Math.random() * window.innerWidth;
-  }
+    return (Math.random() - 0.5) * window.innerWidth;
+  };
 
-  const getRandomY = ()=>{
-    return Math.random() * (0.8 * window.innerHeight)
-  }
+  const getRandomY = () => {
+    return (Math.random()-0.5) * (0.8 * window.innerHeight);
+  };
 
-  const getRandomAngle = () =>{
-    return Math.random() * 180
-  }
+  const getRandomAngle = () => {
+    return Math.random() * 180;
+  };
 
-
-  
   return (
     <Fragment>
-      <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks}/>
+      <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} />
 
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
@@ -53,9 +48,13 @@ const Hero = () => {
             <motion.div
               className="h-[110px] breakcon:h-[130px] rounded-md"
               key={index}
-              initial={{y:getRandomY(), x:getRandomX(), rotate:getRandomAngle()}}
-              animate={{y:0, x:0, rotate:0}}
-              transition={{duration:1, ease:"easeOut", delay:0.2}}
+              initial={{
+                y: getRandomY(),
+                x: getRandomX(),
+                rotate: getRandomAngle(),
+              }}
+              animate={{ y: 0, x: 0, rotate: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
             >
               <img
                 src={image}
