@@ -31,7 +31,7 @@ const Hero = () => {
   };
 
   const getRandomY = () => {
-    return (Math.random()-0.5) * (0.8 * window.innerHeight);
+    return Math.random() * (0.8 * window.innerHeight);
   };
 
   const getRandomAngle = () => {
