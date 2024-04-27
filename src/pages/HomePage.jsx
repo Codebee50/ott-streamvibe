@@ -10,13 +10,16 @@ import ScreensShowcase from "../sections/ScreensShowcase";
 import FAQSection from "../sections/FAQSection";
 import PlanShowcaseSection from "../sections/PlanShowcaseSection";
 import StartFreeTrialSection from "../sections/StartFreeTrialSection";
+import Footer from "../sections/Footer";
 
 const HomePage = () => {
+  const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5)
+
   return (
     <Fragment>
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
-          {heroBackgroundImageList.map((image, index) => (
+          {shuffled.map((image, index) => (
             <div
               className="h-[110px] breakcon:h-[130px] rounded-md"
               key={index}
@@ -70,6 +73,7 @@ const HomePage = () => {
       <FAQSection/>
       <PlanShowcaseSection/>
       <StartFreeTrialSection/>
+      <Footer/>
     </Fragment>
   );
 };

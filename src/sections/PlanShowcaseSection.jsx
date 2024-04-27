@@ -12,7 +12,7 @@ const PlanShowcaseSection = () => {
     }
 
   return (
-    <section className="w-full min-h-[60vh] bg-page-black padding-x pt-[5vh] pb-[10vh]">
+    <section className="w-full min-h-[60vh] bg-page-black padding-x pt-[5vh] pb-[10vh] max-container">
       <div className="w-full flex flex-col md:flex-row md:items-center justify-between">
 
         <SectionHeader

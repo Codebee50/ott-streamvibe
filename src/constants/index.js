@@ -1,5 +1,110 @@
 import { gamingConsole, laptop, smartPhone, tablet, tv, vr } from "../assets/icons"
 
+
+export const footerItems = [
+    [
+        {
+            'label': 'Home',
+            'link': '#',
+            'head': true
+        },
+        {
+            'label': 'Categories',
+            'link': '#'
+        },
+        {
+            'label': 'Devices',
+            'link': '#'
+        },
+        {
+            'label': 'Pricing',
+            'link': '#'
+        },
+        {
+            'label': 'FAQ',
+            'link': '#'
+        },
+    ],
+
+    [
+        {
+            'label': 'Movies',
+            'link': '#',
+            'head': true
+        },
+        {
+            'label': 'Genres',
+            'link': '#'
+        },
+        {
+            'label': 'Trending',
+            'link': '#'
+        },
+        {
+            'label': 'New Release',
+            'link': '#'
+        },
+        {
+            'label': 'Popular',
+            'link': '#'
+        },
+    ],
+
+    [
+        {
+            'label': 'Shows',
+            'link': '#',
+            'head': true
+        },
+        {
+            'label': 'Genres',
+            'link': '#'
+        },
+        {
+            'label': 'Trending',
+            'link': '#'
+        },
+        {
+            'label': 'New Release',
+            'link': '#'
+        },
+        {
+            'label': 'Popular',
+            'link': '#'
+        },
+    ],
+
+    [
+        {
+            'label': 'Support',
+            'link': '#',
+            'head': true
+        },
+        {
+            'label': 'Contat us',
+            'link': '#'
+        },
+    ],
+    [
+        {
+            'label': 'Subscription',
+            'link': '#',
+            'head': true
+        },
+        {
+            'label': 'Plans',
+            'link': '#'
+        },
+        {
+            'label': 'Features',
+            'link': '#'
+        },
+    ],
+
+
+]
+
+
 export const planList =[
     {
         'name': 'Basic Plan',
