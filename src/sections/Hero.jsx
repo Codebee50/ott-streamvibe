@@ -8,6 +8,7 @@ import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
 import { Drawer } from "antd";
 import { IoMdClose } from "react-icons/io";
+import { motion } from "framer-motion";
 
 
 const Hero = () => {
@@ -27,6 +28,21 @@ const Hero = () => {
   const closeNavDrawer = () => {
     setNavOpen(false);
   };
+
+  const getRandomX = () => {
+    return Math.random() * window.innerWidth;
+  }
+
+  const getRandomY = ()=>{
+    return Math.random() * (0.8 * window.innerHeight)
+  }
+
+  const getRandomAngle = () =>{
+    return Math.random() * 180
+  }
+
+
+  
   return (
     <Fragment>
       <Drawer
@@ -59,16 +75,19 @@ const Hero = () => {
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
           {shuffledList.map((image, index) => (
-            <div
+            <motion.div
               className="h-[110px] breakcon:h-[130px] rounded-md"
               key={index}
+              initial={{y:getRandomY(), x:getRandomX(), rotate:getRandomAngle()}}
+              animate={{y:0, x:0, rotate:0}}
+              transition={{duration:1, ease:"easeOut", delay:0.2}}
             >
               <img
                 src={image}
                 className="w-full rounded-xl h-full object-cover object-center"
                 alt=""
               />
-            </div>
+            </motion.div>
           ))}
         </div>
 
