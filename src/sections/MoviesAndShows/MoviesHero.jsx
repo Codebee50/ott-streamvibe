@@ -16,6 +16,7 @@ import {
 } from "react-icons/hi2";
 import BlackCardStroke from "../../components/BlackCardStroke";
 import { animate, useAnimate } from "framer-motion";
+import { IoPlay } from "react-icons/io5";
 
 const MoviesHero = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -23,15 +24,19 @@ const MoviesHero = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const numImages = 4; //maximun umber of images to be loaded into the carousel
 
+  const [scope, animation] = useAnimate();
 
-  const [scope, animation] = useAnimate()
+  useEffect(() => {
+    animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
+  }, [carouselIndex, scope]);
 
-  useEffect(()=>{
-    animate(scope.current, {opacity:[0,1]}, {duration:1})
+  useEffect(() => {
+    const timer = setInterval(() => {
+      increamentCarouselIndex();
+    }, 5000);
 
-  }, [carouselIndex, scope])
-
-
+    return ()=>{clearInterval(timer)}
+  }, []);
 
   const showNavDrawer = () => {
     setNavOpen(true);
@@ -43,18 +48,19 @@ const MoviesHero = () => {
 
   function fetchMovies() {
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${import.meta.env.VITE_TMDP_API_TOKEN}`
+      `https://api.themoviedb.org/3/discover/movie?language=en&api_key=${
+        import.meta.env.VITE_TMDP_API_TOKEN
+      }`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setMovieList(data.results);
       });
   }
 
   function increamentCarouselIndex() {
     setCarouselIndex((prev) => {
-      if (prev === numImages-1) return 0;
+      if (prev === numImages - 1) return 0;
       return prev + 1;
     });
   }
@@ -94,47 +100,51 @@ const MoviesHero = () => {
               ref={scope}
             />
 
-            <div className="absolute w-full h-full bg-gradient-to-t from-page-black from-10% top-0 flex flex-col items-center justify-end">
+            <div className="absolute w-full h-full bg-gradient-to-t from-page-black from-10% top-0 flex flex-col items-center justify-end ">
               <h1 className="text-white font-bold font-manrope text-3xl breakcon:text-4xl mt-[35vh] text-center ">
                 {movieList[carouselIndex]?.title}
               </h1>
 
-              <p className="w-[90%] text-center mt-3 text-gray60 font-manrope text-[0.95rem] line-clamp-3">
+              <p className="w-[90%] text-center mt-3 text-gray60 font-manrope text-[0.95rem] line-clamp-3  overflow-ellipsis  max-sm:text-sm">
                 {movieList[carouselIndex]?.overview}
               </p>
 
-              <div className="flex flex-row items-center justify-center flex-wrap mt-7 gap-3">
+              <div className="flex flex-row items-center justify-center flex-wrap gap-3 mt-7">
                 <IconButton
-                  icon={<HiMiniPlay color="white" size={"1.3em"} />}
+                  icon={IoPlay}
                   text={"Play now"}
                 />
 
                 <div className="flex flex-row items-center gap-1">
                   <BlackCardStroke
-                    icon={<HiPlus color="white" size={"1.3em"} />}
+                    icon={HiPlus}
                   />
                   <BlackCardStroke
-                    icon={<HiOutlineHandThumbUp color="white" size={"1.3em"} />}
+                    icon={HiOutlineHandThumbUp}
                   />
                   <BlackCardStroke
-                    icon={<HiOutlineSpeakerWave color="white" size={"1.3em"} />}
+                    icon={HiOutlineSpeakerWave}
                   />
                 </div>
               </div>
 
               <div className="w-full flex flex-row items-center justify-between mt-10 px-5 max-sm:hidden">
                 <BlackCardStroke
-                  icon={<HiArrowLeft color="white" size={"1.3em"} />}
+                  icon={HiArrowLeft}
                   onClick={decreamentCarouselIndex}
                 />
 
                 <div className="flex flex-row items-center gap-[3px]">
-                  {
-                    Array(numImages).fill().map((_, index)=>(
-                      <span key={`indicator-${index}`} className={`w-4 h-[4px] bg-black20 rounded-xl ${index===carouselIndex && 'bg-red45 w-5'}`}></span>
-
-                    ))
-                  }
+                  {Array(numImages)
+                    .fill()
+                    .map((_, index) => (
+                      <span
+                        key={`indicator-${index}`}
+                        className={`w-4 h-[4px] bg-black20 rounded-xl ${
+                          index === carouselIndex && "bg-red45 w-5"
+                        }`}
+                      ></span>
+                    ))}
                   {/* <span className={`w-5 h-[4px]  rounded-xl bg-red45`}></span>
                   <span className={`w-4 h-[4px] bg-black20 rounded-xl`}></span>
                   <span className={`w-4 h-[4px] bg-black20 rounded-xl`}></span>
@@ -142,7 +152,7 @@ const MoviesHero = () => {
                 </div>
 
                 <BlackCardStroke
-                  icon={<HiArrowRight color="white" size={"1.3em"} />}
+                  icon={HiArrowRight}
                   onClick={increamentCarouselIndex}
                 />
               </div>

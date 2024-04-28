@@ -46,6 +46,15 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
+  .three_lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; 
+    line-height: 1.7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 }
 
 @layer utilities {
