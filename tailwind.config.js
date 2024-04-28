@@ -39,6 +39,9 @@ export default {
       },
       fontFamily:{
         'manrope': ['Manrope', 'sans-serif']
+      },
+      backgroundImage: {
+        'default-bg': "url('/src/assets/images/defaultbg.png')"
       }
     },
   },
