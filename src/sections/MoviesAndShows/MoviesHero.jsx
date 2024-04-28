@@ -15,12 +15,23 @@ import {
   HiArrowLeft,
 } from "react-icons/hi2";
 import BlackCardStroke from "../../components/BlackCardStroke";
+import { animate, useAnimate } from "framer-motion";
 
 const MoviesHero = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [movieList, setMovieList] = useState([]);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const numImages = 4; //maximun umber of images to be loaded into the carousel
+
+
+  const [scope, animation] = useAnimate()
+
+  useEffect(()=>{
+    animate(scope.current, {opacity:[0,1]}, {duration:1})
+
+  }, [carouselIndex, scope])
+
+
 
   const showNavDrawer = () => {
     setNavOpen(true);
@@ -80,6 +91,7 @@ const MoviesHero = () => {
                   : defaultbg
               }
               alt=""
+              ref={scope}
             />
 
             <div className="absolute w-full h-full bg-gradient-to-t from-page-black from-10% top-0 flex flex-col items-center justify-end">

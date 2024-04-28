@@ -53,8 +53,8 @@ const Hero = () => {
                 x: getRandomX(),
                 rotate: getRandomAngle(),
               }}
-              animate={{ y: 0, x: 0, rotate: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              animate={{ y: [getRandomY(), 0], x: [getRandomX(), getRandomX(), getRandomX(), 0], rotate: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
             >
               <img
                 src={image}
