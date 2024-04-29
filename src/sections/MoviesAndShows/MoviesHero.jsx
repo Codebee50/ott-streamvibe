@@ -6,17 +6,17 @@ import NavDrawer from "../../components/NavDrawer";
 import { HiOutlineHandThumbUp } from "react-icons/hi2";
 import IconButton from "../../components/IconButton";
 import defaultbg from "../../assets/images/defaultbg.png";
+import BlackCardStroke from "../../components/BlackCardStroke";
+import { animate, useAnimate } from "framer-motion";
+import { IoPlay } from "react-icons/io5";
 
 import {
-  HiMiniPlay,
   HiPlus,
   HiOutlineSpeakerWave,
   HiArrowRight,
   HiArrowLeft,
 } from "react-icons/hi2";
-import BlackCardStroke from "../../components/BlackCardStroke";
-import { animate, useAnimate } from "framer-motion";
-import { IoPlay } from "react-icons/io5";
+
 
 const MoviesHero = () => {
   const [navOpen, setNavOpen] = useState(false);

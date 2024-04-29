@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
-import CardBlocks from "../components/ImagesHorizonalSlider";
-import MovieCollectionCard from "../components/MovieCollectionCard";
+import CardBlocks from "../../components/ImagesHorizonalSlider";
+import MovieCollectionCard from "../../components/MovieCollectionCard";
 
-const Categories = () => {
+const OurGenres = () => {
   const [genreList, setGenreList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
 
@@ -16,7 +16,6 @@ const Categories = () => {
   const getMoviesList = useCallback(async () => {
     const genreIds = genreList.map((genre) => genre.id);
     const movies = [];
-
     console.log(genreIds.join("|"));
     if (genreIds.length > 0) {
       const data = await Promise.all([
@@ -94,7 +93,7 @@ const Categories = () => {
 
   return (
     <CardBlocks
-      className={"pt-[35vh] pb-[10vh] sm:pb-[15vh]"}
+        className="pt-[5vh] pb-[6vh]"
       mainList={genreList.map((genre) => {
         const posterPaths = fechPosterImagesByGenreId(genre.id);
         return {
@@ -104,12 +103,9 @@ const Categories = () => {
         };
       })}
       component={MovieCollectionCard}
-      headerText={"Explore our wide variety of categories"}
-      descText={
-        "Whether you're looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new"
-      }
+      headerText={"Our Genres"}
     />
   );
 };
 
-export default Categories;
+export default OurGenres;

@@ -3,6 +3,7 @@ import { HiArrowLeft } from "react-icons/hi";
 
 const SlideIndicator = (props) => {
   const trSlideRatio = Math.ceil(props.slideRatio);
+  console.log('slide ratio', props.slideRatio)
   const remainder = props.slideRatio % Math.floor(props.slideRatio) === 0;
 
   return (
@@ -23,7 +24,7 @@ const SlideIndicator = (props) => {
                 <span
                   key={index}
                   className={`w-4 h-[4px] bg-black20 rounded-xl ${
-                    index === props.scrollIndex && "bg-red45"
+                    (index === Math.floor(props.scrollIndex)) && "bg-red45"
                   }`}
                 ></span>
               );

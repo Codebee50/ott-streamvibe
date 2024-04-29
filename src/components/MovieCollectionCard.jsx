@@ -1,13 +1,18 @@
 import { HiArrowRight } from "react-icons/hi";
 import defaultbg from "../assets/images/defaultbg.png";
-// import Imagehero from '../assets/heroimages/Imagehero.png';
-// import Imagehero1 from '../assets/heroimages/Imagehero-1.png';
-// import Imagehero2 from '../assets/heroimages/Imagehero-2.png';
-// import Imagehero3 from '../assets/heroimages/Imagehero-3.png';
+import { useLayoutEffect } from "react";
+import { useRef } from "react";
+
 
 const MovieCollectionCard = (props) => {
+  const ref = useRef(null)
+
+  useLayoutEffect(()=>{
+    props.onCardRendered(ref.current.clientWidth)
+  },[])
+
   return (
-    <div className="bg-black10 h-max w-max p-4 rounded-lg">
+    <div className="bg-black10 h-max w-max p-4 rounded-lg" ref={ref}>
       <div className="w-[235px] h-[252px] rounded-lg relative flex">
         <div className="w-full h-full grid grid-cols-2 gap-[2px]">
         {props.imageLinks.map((imageLink, index) => (
