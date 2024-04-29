@@ -60,6 +60,7 @@ const Hero = () => {
                 src={image}
                 className="w-full rounded-xl h-full object-cover object-center"
                 alt=""
+                
               />
             </motion.div>
           ))}
