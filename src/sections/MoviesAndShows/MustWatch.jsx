@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ImagesHorizonalSlider from "../../components/ImagesHorizonalSlider";
-import MovieCardSm from "../../components/MovieCardSm";
+import MustWatchMovieCard from "../../components/MustWatchMovieCard";
 
 const MustWatch = () => {
   const [mustWatchMovieList, setMustWatchMovieList] = useState([]);
@@ -31,7 +31,7 @@ const MustWatch = () => {
           title: item.title,
         };
       })}
-      component={MovieCardSm}
+      component={MustWatchMovieCard}
       headerText={"Must - Watch Movies"}
     />
   );

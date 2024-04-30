@@ -1,9 +1,9 @@
 import { useLayoutEffect } from "react";
 import { useRef } from "react";
-import { HiEye } from "react-icons/hi";
+import { HiEye, HiStar } from "react-icons/hi";
 import { RiMovie2Line } from "react-icons/ri";
 
-const MovieCardSm = (props) => {
+const MustWatchMovieCard = (props) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
@@ -20,7 +20,7 @@ const MovieCardSm = (props) => {
         <div className="w-max h-max">
           <img
             src={constructTmdbImageLink(props.posterPath)}
-            className="w-[192px] h-[232px] object-center object-cover rounded-lg"
+            className="w-[253px] h-[324px] object-center object-cover rounded-lg"
             alt=""
           />
         </div>
@@ -43,7 +43,14 @@ const MovieCardSm = (props) => {
 
         <div className="bg-black08 py-2 px-2 rounded-full border-[2px] border-strokeBlack">
           <div className="flex flex-row items-center gap-1">
-            <HiEye className="fill-gray60" size={"0.9em"} />
+            <div className="flex flex-row">
+              <HiStar className="fill-red45" size={"0.9em"} />
+              <HiStar className="fill-red45" size={"0.9em"} />
+              <HiStar className="fill-red45" size={"0.9em"} />
+              <HiStar className="fill-red45" size={"0.9em"} />
+              <HiStar className="fill-gray60" size={"0.9em"} />
+            </div>
+
             <p className="text-gray60 font-manrope text-[0.7rem]">
               {props.seenCount}k
             </p>
@@ -54,4 +61,4 @@ const MovieCardSm = (props) => {
   );
 };
 
-export default MovieCardSm;
+export default MustWatchMovieCard;
