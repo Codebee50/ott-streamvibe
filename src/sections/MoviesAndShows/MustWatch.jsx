@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import ImagesHorizonalSlider from "../../components/ImagesHorizonalSlider";
 import MovieCardSm from "../../components/MovieCardSm";
-const TrendingNow = () => {
-  const [trendingMovieList, setTrendingMovieList] = useState([]);
+
+const MustWatch = () => {
+  const [mustWatchMovieList, setMustWatchMovieList] = useState([]);
 
   function fetchTrendingMovies() {
     fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${
+      `https://api.themoviedb.org/3/movie/top_rated?api_key=${
         import.meta.env.VITE_TMDP_API_TOKEN
       }`
     )
       .then((response) => response.json())
       .then((data) => {
-        setTrendingMovieList(data.results);
+        setMustWatchMovieList(data.results);
       });
   }
 
@@ -22,7 +23,7 @@ const TrendingNow = () => {
   return (
     <ImagesHorizonalSlider
       className="pt-[5vh] pb-[6vh]"
-      mainList={trendingMovieList.map((item) => {
+      mainList={mustWatchMovieList.map((item) => {
         return {
           id: item.id,
           seenCount: Math.floor(item.vote_average),
@@ -31,9 +32,9 @@ const TrendingNow = () => {
         };
       })}
       component={MovieCardSm}
-      headerText={"Trending Now"}
+      headerText={"Must - Watch Movies"}
     />
   );
 };
 
-export default TrendingNow;
+export default MustWatch;

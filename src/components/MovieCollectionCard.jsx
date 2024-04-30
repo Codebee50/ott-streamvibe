@@ -7,6 +7,8 @@ import { useRef } from "react";
 const MovieCollectionCard = (props) => {
   const ref = useRef(null)
 
+  
+
   useLayoutEffect(()=>{
     props.onCardRendered(ref.current.clientWidth)
   },[])

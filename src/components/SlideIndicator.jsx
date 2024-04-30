@@ -3,7 +3,6 @@ import { HiArrowLeft } from "react-icons/hi";
 
 const SlideIndicator = (props) => {
   const trSlideRatio = Math.ceil(props.slideRatio);
-  console.log('slide ratio', props.slideRatio)
   const remainder = props.slideRatio % Math.floor(props.slideRatio) === 0;
 
   return (

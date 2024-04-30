@@ -84,7 +84,10 @@ const Categories = () => {
       .then((response) => response.json())
       .then((data) => {
         setGenreList(data.genres);
-      });
+      })
+      .catch(err=>{
+        console.log('Error loading genre in categories', err)
+      })
   }
 
   // num of items * width of individual item/ window.innerWidth
