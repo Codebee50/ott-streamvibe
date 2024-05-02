@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
 import { Fragment } from "react";
-import Nav from "../../components/Nav";
-import { navLinks } from "../../constants";
-import NavDrawer from "../../components/NavDrawer";
 import { HiOutlineHandThumbUp } from "react-icons/hi2";
 import IconButton from "../../components/IconButton";
 import defaultbg from "../../assets/images/defaultbg.png";
@@ -18,12 +15,11 @@ import {
 } from "react-icons/hi2";
 
 const MoviesHero = () => {
-  const [navOpen, setNavOpen] = useState(false);
   const [movieList, setMovieList] = useState([]);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const numImages = 4; //maximun umber of images to be loaded into the carousel
 
-  const [scope, animation] = useAnimate();
+  const [scope] = useAnimate();
 
   useEffect(() => {
     animate(scope.current, { opacity: [0, 1] }, { duration: 1 });
@@ -38,14 +34,6 @@ const MoviesHero = () => {
       clearInterval(timer);
     };
   }, []);
-
-  const showNavDrawer = () => {
-    setNavOpen(true);
-  };
-
-  const closeNavDrawer = () => {
-    setNavOpen(false);
-  };
 
   function fetchMovies() {
     fetch(
@@ -79,16 +67,8 @@ const MoviesHero = () => {
 
   return (
     <Fragment>
-      <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} />
-
       <section className="w-full bg-page-black">
-        <Nav
-          navLinks={navLinks}
-          page="Movies & Shows"
-          onOpenNav={showNavDrawer}
-        />
-
-        <div className="padding-x relative mt-5">
+        <div className="padding-x relative pt-5">
           <div className="w-full h-[70vh] sm:h-[80vh] relative">
             <img
               className="w-full h-full bg-black12 rounded-lg object-center object-cover bg-default-bg bg-no-repeat bg-cover bg-center"

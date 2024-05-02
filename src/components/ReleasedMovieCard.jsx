@@ -7,7 +7,7 @@ const ReleasedMovieCard = (props) => {
 
   useLayoutEffect(() => {
     props.onCardRendered(ref.current.clientWidth);
-  }, []);
+  }, [props]);
 
   function constructTmdbImageLink(path) {
     return `https://image.tmdb.org/t/p/w500${path}`;

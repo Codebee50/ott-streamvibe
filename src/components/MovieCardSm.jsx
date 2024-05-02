@@ -2,20 +2,27 @@ import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import { HiEye } from "react-icons/hi";
 import { RiMovie2Line } from "react-icons/ri";
+// import { openMovieDetailPage } from "../constants";
+import { getMovieDetailLink } from "../constants";
 
 const MovieCardSm = (props) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
     props.onCardRendered(ref.current.clientWidth);
-  }, []);
+  }, [props]);
 
   function constructTmdbImageLink(path) {
     return `https://image.tmdb.org/t/p/w500${path}`;
   }
 
   return (
-    <div className="bg-black10 h-max w-max p-4 rounded-lg" ref={ref}>
+    <a
+      className="bg-black10 h-max w-max p-4 rounded-lg cursor-pointer"
+      ref={ref}
+      href={getMovieDetailLink(props.id)}
+      // onClick={openMovieDetailPage.bind(null, props.id)}
+    >
       <div className="rounded-lg relative flex">
         <div className="w-max h-max">
           <img
@@ -50,7 +57,7 @@ const MovieCardSm = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
