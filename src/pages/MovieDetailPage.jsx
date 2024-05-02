@@ -1,15 +1,18 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import NavAndDrawer from "../components/NavAndDrawer";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import BigPictureHeading from "../components/BigPictureHeading";
+import DetailSection from "../sections/MovieDetail/DetailSection";
+import StartFreeTrialSection from "../sections/StartFreeTrialSection";
+import Footer from "../sections/Footer";
 
 const MovieDetailPage = () => {
   const [searchParams] = useSearchParams();
   const movieId = searchParams.get("id");
   const [movie, setMovie] = useState({});
 
-  function fetchMovie() {
+  const fetchMovie = useCallback(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?api_key=${
         import.meta.env.VITE_TMDP_API_TOKEN
@@ -22,7 +25,7 @@ const MovieDetailPage = () => {
       .catch((err) => {
         console.log("Error loading genre in categories", err);
       });
-  }
+  }, [movieId]);
 
   function constructTmdbImageLink(path) {
     return `https://image.tmdb.org/t/p/w500${path}`;
@@ -30,7 +33,7 @@ const MovieDetailPage = () => {
 
   useEffect(() => {
     fetchMovie();
-  }, []);
+  }, [fetchMovie]);
 
   return (
     <Fragment>
@@ -40,6 +43,10 @@ const MovieDetailPage = () => {
         title={movie.title}
         overview={movie.overview}
       />
+
+      {movie?.title && <DetailSection movie={movie} />}
+      <StartFreeTrialSection />
+      <Footer />
     </Fragment>
   );
 };

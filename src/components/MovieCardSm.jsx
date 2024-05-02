@@ -4,6 +4,7 @@ import { HiEye } from "react-icons/hi";
 import { RiMovie2Line } from "react-icons/ri";
 // import { openMovieDetailPage } from "../constants";
 import { getMovieDetailLink } from "../constants";
+import { constructTmdbImageLink } from "../constants";
 
 const MovieCardSm = (props) => {
   const ref = useRef(null);
@@ -12,9 +13,9 @@ const MovieCardSm = (props) => {
     props.onCardRendered(ref.current.clientWidth);
   }, [props]);
 
-  function constructTmdbImageLink(path) {
-    return `https://image.tmdb.org/t/p/w500${path}`;
-  }
+  // function constructTmdbImageLink(path) {
+  //   return `https://image.tmdb.org/t/p/w500${path}`;
+  // }
 
   return (
     <a

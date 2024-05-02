@@ -7,12 +7,22 @@ import {
   vr,
 } from "../assets/icons";
 
+import defaultbg from "../assets/images/defaultbg.png";
+
 export const openMovieDetailPage = (movieid) => {
   window.location.href = `/moviesandshows?tab=movie&id=${movieid}`;
 };
 
 export const getMovieDetailLink = (movieid) => {
   return `/moviesandshows?tab=movie&id=${movieid}`;
+};
+
+export const constructTmdbImageLink = (path) => {
+  return `https://image.tmdb.org/t/p/w500${path}`;
+};
+
+export const imageErrorHandler = (event) => {
+  event.target.src = defaultbg;
 };
 
 export const footerItems = [
