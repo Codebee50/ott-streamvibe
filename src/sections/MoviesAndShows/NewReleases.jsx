@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ImagesHorizonalSlider from "../../components/ImagesHorizonalSlider";
 import ReleasedMovieCard from "../../components/ReleasedMovieCard";
 
-
 const NewReleases = () => {
   const [trendingMovieList, setTrendingMovieList] = useState([]);
 
@@ -23,12 +22,12 @@ const NewReleases = () => {
   }, []);
   return (
     <ImagesHorizonalSlider
-      className="pt-[5vh] pb-[10vh] sm:pb-[15vh]"
+      className="pt-[5vh] pb-[5vh]"
       mainList={trendingMovieList.map((item) => {
         return {
           id: item.id,
           posterPath: item.poster_path,
-          releaseDate: item.release_date
+          releaseDate: item.release_date,
         };
       })}
       component={ReleasedMovieCard}

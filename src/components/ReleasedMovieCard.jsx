@@ -2,7 +2,6 @@ import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import defaultbg from "../assets/images/defaultbg.png";
 
-
 const ReleasedMovieCard = (props) => {
   const ref = useRef(null);
 
@@ -14,9 +13,8 @@ const ReleasedMovieCard = (props) => {
     return `https://image.tmdb.org/t/p/w500${path}`;
   }
 
-  function onImageErrorHandler(event){
-    console.log('onError')
-    event.target.src=defaultbg
+  function onImageErrorHandler(event) {
+    event.target.src = defaultbg;
   }
 
   return (
@@ -37,7 +35,9 @@ const ReleasedMovieCard = (props) => {
       <div className="flex flex-row items-center justify-between mt-4">
         <div className="bg-black08 py-1 px-3 rounded-full border-[2px] border-strokeBlack w-full">
           <div className="w-full text-center">
-            <p className="text-gray60 font-manrope text-center text-sm ">Released at {props.releaseDate}</p>
+            <p className="text-gray60 font-manrope text-center text-sm ">
+              Released at {props.releaseDate}
+            </p>
           </div>
         </div>
       </div>

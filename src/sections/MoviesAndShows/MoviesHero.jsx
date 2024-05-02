@@ -17,7 +17,6 @@ import {
   HiArrowLeft,
 } from "react-icons/hi2";
 
-
 const MoviesHero = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [movieList, setMovieList] = useState([]);
@@ -35,7 +34,9 @@ const MoviesHero = () => {
       increamentCarouselIndex();
     }, 5000);
 
-    return ()=>{clearInterval(timer)}
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
 
   const showNavDrawer = () => {
@@ -80,7 +81,7 @@ const MoviesHero = () => {
     <Fragment>
       <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} />
 
-      <section className="w-full min-h-screen bg-page-black">
+      <section className="w-full bg-page-black">
         <Nav
           navLinks={navLinks}
           page="Movies & Shows"
@@ -110,21 +111,12 @@ const MoviesHero = () => {
               </p>
 
               <div className="flex flex-row items-center justify-center flex-wrap gap-3 mt-7">
-                <IconButton
-                  icon={IoPlay}
-                  text={"Play now"}
-                />
+                <IconButton icon={IoPlay} text={"Play now"} />
 
                 <div className="flex flex-row items-center gap-1">
-                  <BlackCardStroke
-                    icon={HiPlus}
-                  />
-                  <BlackCardStroke
-                    icon={HiOutlineHandThumbUp}
-                  />
-                  <BlackCardStroke
-                    icon={HiOutlineSpeakerWave}
-                  />
+                  <BlackCardStroke icon={HiPlus} />
+                  <BlackCardStroke icon={HiOutlineHandThumbUp} />
+                  <BlackCardStroke icon={HiOutlineSpeakerWave} />
                 </div>
               </div>
 

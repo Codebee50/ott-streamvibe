@@ -1,18 +1,22 @@
 import { useLayoutEffect } from "react";
 import { useRef } from "react";
-import { HiStar } from "react-icons/hi";
-import { RiMovie2Line } from "react-icons/ri";
+import { MdOutlineDateRange } from "react-icons/md";
 import { PiTelevisionSimple } from "react-icons/pi";
+import defaultbg from "../assets/images/defaultbg.png";
 
-const MustWatchMovieCard = (props) => {
+const TvShowCardsm = (props) => {
   const ref = useRef(null);
 
   useLayoutEffect(() => {
     props.onCardRendered(ref.current.clientWidth);
-  }, [props]);
+  }, []);
 
   function constructTmdbImageLink(path) {
     return `https://image.tmdb.org/t/p/w500${path}`;
+  }
+
+  function onImageErrorHandler(event) {
+    event.target.src = defaultbg;
   }
 
   return (
@@ -23,27 +27,18 @@ const MustWatchMovieCard = (props) => {
             src={constructTmdbImageLink(props.posterPath)}
             className="w-[253px] h-[324px] object-center object-cover rounded-lg"
             alt=""
+            onError={onImageErrorHandler}
           />
         </div>
-
-        {/* <div className="absolute w-full h-full z-10 bg-gradient-to-t from-page-black"></div> */}
       </div>
 
       <div className="flex flex-row items-center justify-between mt-4 mb-2">
         <div className="bg-black08 py-2 px-2 rounded-full border-[2px] border-strokeBlack">
           <div className="flex flex-row items-center gap-1">
-            {props.type == "show" ? (
-              <PiTelevisionSimple
-                className="fill-gray60 flex-shrink-0"
-                size={"0.9em"}
-              />
-            ) : (
-              <RiMovie2Line
-                className="fill-gray60 flex-shrink-0"
-                size={"0.9em"}
-              />
-            )}
-
+            <PiTelevisionSimple
+              className="fill-gray60 flex-shrink-0"
+              size={"0.9em"}
+            />
             <p className="text-gray60 font-manrope text-[0.7rem] line-clamp-1 max-w-[90px]">
               {props.title}
             </p>
@@ -53,15 +48,11 @@ const MustWatchMovieCard = (props) => {
         <div className="bg-black08 py-2 px-2 rounded-full border-[2px] border-strokeBlack">
           <div className="flex flex-row items-center gap-1">
             <div className="flex flex-row">
-              <HiStar className="fill-red45" size={"0.9em"} />
-              <HiStar className="fill-red45" size={"0.9em"} />
-              <HiStar className="fill-red45" size={"0.9em"} />
-              <HiStar className="fill-red45" size={"0.9em"} />
-              <HiStar className="fill-gray60" size={"0.9em"} />
+              <MdOutlineDateRange className="fill-gray60" size={"0.9em"} />
             </div>
 
             <p className="text-gray60 font-manrope text-[0.7rem]">
-              {props.seenCount}k
+              {props.date}
             </p>
           </div>
         </div>
@@ -70,4 +61,4 @@ const MustWatchMovieCard = (props) => {
   );
 };
 
-export default MustWatchMovieCard;
+export default TvShowCardsm;
