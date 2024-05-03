@@ -29,6 +29,7 @@ const MustWatch = () => {
           seenCount: Math.floor(item.vote_average),
           posterPath: item.poster_path,
           title: item.title,
+          type: "movies",
         };
       })}
       component={MustWatchMovieCard}
