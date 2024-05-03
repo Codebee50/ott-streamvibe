@@ -5,7 +5,7 @@ import TvShowsGenres from "./TvShowsGenres";
 
 const TVshowsSection = () => {
   return (
-    <section className="w-full min-h-screen bg-page-black padding-x  max-container flex pt-28">
+    <section className="w-full min-h-screen bg-page-black padding-x-sm  max-container flex pt-28">
       <section className="w-full min-h-[70vh] border-[0.5px] border-strokeBlack m-auto rounded-lg relative">
         <button
           className={

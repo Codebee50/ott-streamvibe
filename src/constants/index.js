@@ -16,6 +16,9 @@ export const openMovieDetailPage = (movieid) => {
 export const getMovieDetailLink = (movieid) => {
   return `/moviesandshows?tab=movie&id=${movieid}`;
 };
+export const getShowDetailLink = (showId) => {
+  return `/moviesandshows?tab=show&id=${showId}`;
+};
 
 export const constructTmdbImageLink = (path) => {
   return `https://image.tmdb.org/t/p/w500${path}`;

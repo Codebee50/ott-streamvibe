@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import DetailCard from "../../components/DetailCard";
 import TextSmVariant from "../../components/TextSmVariant";
 import RenderRatingList from "../../components/RenderRatingList";
 import MovieInfoCard from "../../components/MovieInfoCard";
 import RenderCastList from "../../components/RenderCastList";
-
-const DetailSection = (props) => {
+const ShowDetailSection = (props) => {
+  const releaseDate = props.show.first_air_date.split("-")[0];
+  const [averageRating, setAverageRating] = useState(0);
   const [castList, setCastList] = useState([]);
   const [crewList, setCrewList] = useState([]);
-  const [movieReviews, setMovieReviews] = useState([]);
-  const [averageRating, setAverageRating] = useState(0);
-  const releaseDate = props.movie.release_date.split("-")[0];
+  const [showReviews, setShowReviews] = useState([]);
   const director = getMovieDirector();
   const musicEngineer = getMusicEngineer();
 
-  const { id } = props.movie;
+  const { id } = props.show;
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/credits?language=en&api_key=${
+      `https://api.themoviedb.org/3/tv/${id}/credits?language=en&api_key=${
         import.meta.env.VITE_TMDP_API_TOKEN
       }`
     )
@@ -28,7 +27,7 @@ const DetailSection = (props) => {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?language=en&api_key=${
+      `https://api.themoviedb.org/3/tv/${id}/reviews?language=en&api_key=${
         import.meta.env.VITE_TMDP_API_TOKEN
       }`
     )
@@ -42,7 +41,7 @@ const DetailSection = (props) => {
           totalRating / data.results.length <= 0 || totalRating == 0
             ? 0
             : totalRating / data.results.length;
-        setMovieReviews(data.results);
+        setShowReviews(data.results);
 
         setAverageRating(averageRating);
       });
@@ -72,29 +71,26 @@ const DetailSection = (props) => {
         <DetailCard className={"hidden s-2:flex flex-col"}>
           <TextSmVariant text={"Description"} />
           <TextSmVariant
-            text={props.movie.overview}
+            text={props.show.overview}
             className={"text-white mt-2 text-[0.9rem] leading-6"}
           />
         </DetailCard>
 
         <RenderCastList castList={castList} />
-
-        <RenderRatingList movieReviews={movieReviews} />
+        <RenderRatingList movieReviews={showReviews} />
       </div>
 
       <MovieInfoCard
-        overview={props.movie.overview}
+        overview={props.show.overview}
         releaseDate={releaseDate}
-        spoken_languages={props.movie.spoken_languages.map(
-          (language) => language.english_name
-        )}
+        spoken_languages={props.show.languages}
         averageRating={averageRating}
         director={director}
         musicEngineer={musicEngineer}
-        genres={props.movie.genres}
+        genres={props.show.genres}
       />
     </section>
   );
 };
 
-export default DetailSection;
+export default ShowDetailSection;

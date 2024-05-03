@@ -4,22 +4,19 @@ import TvShowCardsm from "./TvShowCardsm";
 
 const RenderTvShowsCards = (props) => {
   const [mainList, setMainList] = useState([]);
+  const { append, endpoint } = props;
 
-  function fetchList() {
+  useEffect(() => {
     fetch(
-      `${props.endpoint}?api_key=${import.meta.env.VITE_TMDP_API_TOKEN}${
-        !props.append ? "" : props.append
+      `${endpoint}?api_key=${import.meta.env.VITE_TMDP_API_TOKEN}${
+        !append ? "" : append
       }`
     )
       .then((response) => response.json())
       .then((data) => {
         setMainList(data.results);
       });
-  }
-
-  useEffect(() => {
-    fetchList();
-  }, []);
+  }, [append, endpoint]);
 
   return (
     <ImagesHorizonalSlider

@@ -3,13 +3,16 @@ import { useRef } from "react";
 import { MdOutlineDateRange } from "react-icons/md";
 import { PiTelevisionSimple } from "react-icons/pi";
 import defaultbg from "../assets/images/defaultbg.png";
+import { getShowDetailLink } from "../constants";
 
 const TvShowCardsm = (props) => {
   const ref = useRef(null);
 
+  const { onCardRendered } = props;
+
   useLayoutEffect(() => {
-    props.onCardRendered(ref.current.clientWidth);
-  }, []);
+    onCardRendered(ref.current.clientWidth);
+  }, [onCardRendered]);
 
   function constructTmdbImageLink(path) {
     return `https://image.tmdb.org/t/p/w500${path}`;
@@ -20,7 +23,11 @@ const TvShowCardsm = (props) => {
   }
 
   return (
-    <div className="bg-black10 h-max w-max p-4 rounded-lg" ref={ref}>
+    <a
+      className="bg-black10 h-max w-max p-4 rounded-lg"
+      ref={ref}
+      href={getShowDetailLink(props.id)}
+    >
       <div className="rounded-lg relative flex">
         <div className="w-max h-max">
           <img
@@ -57,7 +64,7 @@ const TvShowCardsm = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

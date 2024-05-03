@@ -7,6 +7,7 @@ import TVshowsSection from "../sections/MoviesAndShows/TVshowsSection";
 import { useSearchParams } from "react-router-dom";
 import NavAndDrawer from "../components/NavAndDrawer";
 import MovieDetailPage from "./MovieDetailPage";
+import TvDetailPage from "./TvDetailPage";
 
 const MoviesAndShowsPage = () => {
   const [searchParams] = useSearchParams();
@@ -27,6 +28,10 @@ const MoviesAndShowsPage = () => {
 
   if (tab == "movie") {
     return <MovieDetailPage />;
+  }
+
+  if (tab == "show") {
+    return <TvDetailPage />;
   }
 
   return (
