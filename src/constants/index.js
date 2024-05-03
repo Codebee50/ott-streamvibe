@@ -13,6 +13,8 @@ export const openMovieDetailPage = (movieid) => {
   window.location.href = `/moviesandshows?tab=movie&id=${movieid}`;
 };
 
+export const TMDB_API_TOKEN = import.meta.env.VITE_TMDP_API_TOKEN;
+
 export const getMovieDetailLink = (movieid) => {
   return `/moviesandshows?tab=movie&id=${movieid}`;
 };

@@ -69,12 +69,15 @@ const ShowDetailSection = (props) => {
   return (
     <section className="w-full padding-x pt-28 max-container min-h-[30vh] bg-page-black flex flex-col-reverse s-2:flex-row gap-3 pb-5">
       <div className="w-full s-2:w-[60%] flex flex-col gap-4">
-        <DetailCard>
+        <DetailCard className="max-[400px]:px-3">
           <p className="font-manrope text-white font-semibold">
             Seasons and Episodes
           </p>
 
-          <RenderSeasonsList seasonsList={props.show.seasons} />
+          <RenderSeasonsList
+            seasonsList={props.show.seasons}
+            seriesId={props.show.id}
+          />
         </DetailCard>
         <DetailCard className={"hidden s-2:flex flex-col"}>
           <TextSmVariant text={"Description"} />

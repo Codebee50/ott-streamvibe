@@ -53,14 +53,17 @@ const Hero = () => {
                 x: getRandomX(),
                 rotate: getRandomAngle(),
               }}
-              animate={{ y: [getRandomY(), 0], x: [getRandomX(), getRandomX(), getRandomX(), 0], rotate: 0 }}
+              animate={{
+                y: [getRandomY(), 0],
+                x: [getRandomX(), getRandomX(), getRandomX(), 0],
+                rotate: 0,
+              }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
             >
               <img
                 src={image}
                 className="w-full rounded-xl h-full object-cover object-center"
                 alt=""
-                
               />
             </motion.div>
           ))}

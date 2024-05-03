@@ -8,6 +8,7 @@ export default {
         "trans-1": "rgba(0,0,0,0.1)",
         "trans-2": "rgba(0,0,0,0.7)",
         "trans-3": "rgba(0,0,0,0.8)",
+        "trans-5": "rgba(0,0,0,0.5)",
         "trans-4": "rgb(15,15,15, 0.9)",
         "trans-red": "rgb(229, 0, 0, 0.1)",
         "trans-red2": "rgb(229, 0, 0, 0.5)",
