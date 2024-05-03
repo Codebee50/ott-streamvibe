@@ -5,7 +5,7 @@ import TrendingNow from "./TrendingNow";
 
 const MoviesSection = () => {
   return (
-    <section className="w-full bg-page-black padding-x pt-28 max-container flex">
+    <section className="w-full bg-page-black padding-x-sm pt-28 max-container flex">
       <section className="w-full min-h-[70vh] border-[0.5px] border-strokeBlack m-auto rounded-lg relative">
         <button
           className={

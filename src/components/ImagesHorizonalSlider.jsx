@@ -62,7 +62,7 @@ const ImagesHorizonalSlider = (props) => {
   }, [scrollLeft]);
 
   const classes =
-    "w-full bg-page-black padding-x max-container flex flex-col " +
+    "w-full bg-page-black padding-x-sm max-container flex flex-col " +
     props.className;
 
   return (
