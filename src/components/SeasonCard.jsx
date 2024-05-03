@@ -33,10 +33,11 @@ const SeasonCard = (props) => {
       return; //display episodes using the list
     } else {
       fetch(
-        `https://api.themoviedb.org/3/tv/${props.seriesId}/season/4?api_key=${TMDB_API_TOKEN}`
+        `https://api.themoviedb.org/3/tv/${props.seriesId}/season/${props.season.season_number}?api_key=${TMDB_API_TOKEN}`
       )
         .then((response) => response.json())
         .then((data) => {
+          console.log("go", data);
           setEpisodesList(data.episodes);
           setCardState("open");
         });
