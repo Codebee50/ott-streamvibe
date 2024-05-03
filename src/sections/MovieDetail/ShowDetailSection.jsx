@@ -4,6 +4,7 @@ import TextSmVariant from "../../components/TextSmVariant";
 import RenderRatingList from "../../components/RenderRatingList";
 import MovieInfoCard from "../../components/MovieInfoCard";
 import RenderCastList from "../../components/RenderCastList";
+import RenderSeasonsList from "../../components/RenderSeasonsList";
 const ShowDetailSection = (props) => {
   const releaseDate = props.show.first_air_date.split("-")[0];
   const [averageRating, setAverageRating] = useState(0);
@@ -68,6 +69,13 @@ const ShowDetailSection = (props) => {
   return (
     <section className="w-full padding-x pt-28 max-container min-h-[30vh] bg-page-black flex flex-col-reverse s-2:flex-row gap-3 pb-5">
       <div className="w-full s-2:w-[60%] flex flex-col gap-4">
+        <DetailCard>
+          <p className="font-manrope text-white font-semibold">
+            Seasons and Episodes
+          </p>
+
+          <RenderSeasonsList seasonsList={props.show.seasons} />
+        </DetailCard>
         <DetailCard className={"hidden s-2:flex flex-col"}>
           <TextSmVariant text={"Description"} />
           <TextSmVariant
