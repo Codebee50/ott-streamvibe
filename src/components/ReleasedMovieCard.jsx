@@ -1,6 +1,7 @@
 import { useLayoutEffect } from "react";
 import { useRef } from "react";
 import defaultbg from "../assets/images/defaultbg.png";
+import { getMovieDetailLink } from "../constants";
 
 const ReleasedMovieCard = (props) => {
   const ref = useRef(null);
@@ -18,7 +19,11 @@ const ReleasedMovieCard = (props) => {
   }
 
   return (
-    <div className="bg-black10 h-max w-max p-4 rounded-lg" ref={ref}>
+    <a
+      className="bg-black10 h-max w-max p-4 rounded-lg"
+      ref={ref}
+      href={getMovieDetailLink(props.id)}
+    >
       <div className="rounded-lg relative flex">
         <div className="w-max h-max">
           <img
@@ -41,7 +46,7 @@ const ReleasedMovieCard = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

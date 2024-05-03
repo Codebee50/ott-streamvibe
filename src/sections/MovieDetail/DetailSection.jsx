@@ -28,9 +28,6 @@ const DetailSection = (props) => {
   const director = getMovieDirector();
   const musicEngineer = getMusicEngineer();
 
-  // calculate average rating
-  //build component to display average rating
-
   const { id } = props.movie;
   useEffect(() => {
     fetch(
@@ -57,7 +54,7 @@ const DetailSection = (props) => {
 
         const averageRating =
           totalRating / data.results.length <= 0 || totalRating == 0
-            ? 1
+            ? 0
             : totalRating / data.results.length;
         setMovieReviews(data.results);
 

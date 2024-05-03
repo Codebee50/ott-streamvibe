@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { HiStar } from "react-icons/hi";
 import { RiMovie2Line } from "react-icons/ri";
 import { PiTelevisionSimple } from "react-icons/pi";
+import { getMovieDetailLink } from "../constants";
 
 const MustWatchMovieCard = (props) => {
   const ref = useRef(null);
@@ -16,7 +17,11 @@ const MustWatchMovieCard = (props) => {
   }
 
   return (
-    <div className="bg-black10 h-max w-max p-4 rounded-lg" ref={ref}>
+    <a
+      className="bg-black10 h-max w-max p-4 rounded-lg"
+      ref={ref}
+      href={getMovieDetailLink(props.id)}
+    >
       <div className="rounded-lg relative flex">
         <div className="w-max h-max">
           <img
@@ -66,7 +71,7 @@ const MustWatchMovieCard = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
