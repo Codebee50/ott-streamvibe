@@ -10,7 +10,6 @@ const ImagesHorizonalSlider = (props) => {
   const [scrollLeft, setSCrollLeft] = useState(0);
   const [slideRatio, setSlideRatio] = useState(0);
 
-
   function rightSlideHandler() {
     categoriesContainerRef.current.scrollLeft +=
       categoriesContainerRef.current.getBoundingClientRect().width;
@@ -42,7 +41,11 @@ const ImagesHorizonalSlider = (props) => {
     const scrollwidth =
       categoriesContainerRef.current?.scrollWidth -
         categoriesContainerRef.current?.clientWidth || 0;
-    return (scrollLeft / scrollwidth) * 100;
+
+    const containerPercentage =
+      (categoriesContainerRef.current?.clientWidth / scrollwidth) * 100;
+
+    return ((scrollLeft + containerPercentage) / scrollwidth) * 100;
   }
 
   useEffect(() => {
@@ -58,15 +61,16 @@ const ImagesHorizonalSlider = (props) => {
     };
   }, [scrollLeft]);
 
-
-  const classes = 'w-full bg-page-black padding-x max-container flex flex-col ' +props.className
+  const classes =
+    "w-full bg-page-black padding-x max-container flex flex-col " +
+    props.className;
 
   return (
     <section className={classes}>
       <div className="w-full flex flex-row items-center justify-between ">
         <div className="flex flex-col items-start">
           <TextL text={props.headerText} />
-          {!props.descText=='' && <TextSm text={props.descText} />}
+          {!props.descText == "" && <TextSm text={props.descText} />}
         </div>
 
         <div>

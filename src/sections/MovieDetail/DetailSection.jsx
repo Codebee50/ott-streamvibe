@@ -9,13 +9,12 @@ import {
   HiArrowRight,
   HiOutlineCalendar,
   HiOutlineLanguage,
-  HiPlus,
 } from "react-icons/hi2";
 import DetailHeading from "../../components/DetailHeading";
 import BgBlackStrokeCard from "../../components/BgBlackStrokeCard";
 import { RiAppsLine } from "react-icons/ri";
 import CrewMember from "../../components/CrewMember";
-import MovieReviewCard from "../../components/MovieReviewCard";
+import RenderRatingList from "../../components/RenderRatingList";
 
 const DetailSection = (props) => {
   const [castList, setCastList] = useState([]);
@@ -26,11 +25,12 @@ const DetailSection = (props) => {
   const director = getMovieDirector();
   const musicEngineer = getMusicEngineer();
 
+  const { id } = props.movie;
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${
-        props.movie.id
-      }/credits?language=en&api_key=${import.meta.env.VITE_TMDP_API_TOKEN}`
+      `https://api.themoviedb.org/3/movie/${id}/credits?language=en&api_key=${
+        import.meta.env.VITE_TMDP_API_TOKEN
+      }`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -39,23 +39,22 @@ const DetailSection = (props) => {
       });
 
     fetch(
-      `https://api.themoviedb.org/3/movie/${
-        props.movie.id
-      }/reviews?language=en&api_key=${import.meta.env.VITE_TMDP_API_TOKEN}`
+      `https://api.themoviedb.org/3/movie/${id}/reviews?language=en&api_key=${
+        import.meta.env.VITE_TMDP_API_TOKEN
+      }`
     )
       .then((response) => response.json())
       .then((data) => {
         setMovieReviews(data.results);
       });
-  }, []);
+  }, [id]);
 
-  function scrollCastContainerLeft() {
-    castContainerRef.current.scrollLeft -=
-      castContainerRef.current?.clientWidth;
+  function scrollContainerLeftByWidth(container) {
+    container.scrollLeft -= container.clientWidth;
   }
 
-  function scrollCastContainerRight() {
-    castContainerRef.current.scrollLeft += castContainerRef.current.clientWidth;
+  function scrollContainerRightByWidth(container) {
+    container.scrollLeft += container.clientWidth;
   }
 
   function getMovieDirector() {
@@ -93,11 +92,17 @@ const DetailSection = (props) => {
             <div className="flex flex-row items-center gap-[7px]">
               <RoundBgIcon
                 icon={HiArrowLeft}
-                onClick={scrollCastContainerLeft}
+                onClick={scrollContainerLeftByWidth.bind(
+                  null,
+                  castContainerRef.current
+                )}
               />
               <RoundBgIcon
                 icon={HiArrowRight}
-                onClick={scrollCastContainerRight}
+                onClick={scrollContainerRightByWidth.bind(
+                  null,
+                  castContainerRef.current
+                )}
               />
             </div>
           </div>
@@ -123,27 +128,7 @@ const DetailSection = (props) => {
           </div>
         </DetailCard>
 
-        <DetailCard className="flex flex-col">
-          <div className="flex w-full flex-row items-center justify-between flex-wrap">
-            <TextSmVariant text="Reviews" />
-
-            <BgBlackStrokeCard className="flex flex-row items-center gap-2 sm:py-3">
-              <HiPlus className="fill-white" />
-              <p className="font-manrope text-white text-[0.75rem] sm:text-sm">
-                Add your review
-              </p>
-            </BgBlackStrokeCard>
-          </div>
-
-          <div className="w-full flex flex-col">
-            <div className="w-full flex flex-row gap-2 overflow-x-scroll no-scrollbar mt-5">
-              {movieReviews.map((review) => (
-                <MovieReviewCard key={review.id} {...review} />
-              ))}
-            </div>
-            {/* slide buttons go here */}
-          </div>
-        </DetailCard>
+        <RenderRatingList movieReviews={movieReviews} />
       </div>
 
       <div className="w-full s-2:w-[40%] flex flex-col gap-3">

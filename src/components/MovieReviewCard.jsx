@@ -18,7 +18,6 @@ const MovieReviewCard = (props) => {
   }
 
   function getStreamVibeRating(tmdbRating) {
-    console.log(tmdbRating);
     return tmdbRating / 2 < 1 ? 1.5 : tmdbRating / 2;
   }
 

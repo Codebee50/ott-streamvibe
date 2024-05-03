@@ -15,7 +15,6 @@ const TvShowsGenres = () => {
   const getMoviesList = useCallback(async () => {
     const genreIds = genreList.map((genre) => genre.id);
     const movies = [];
-    console.log(genreIds.join("|"));
     if (genreIds.length > 0) {
       const data = await Promise.all([
         getjson(
