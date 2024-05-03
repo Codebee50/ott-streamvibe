@@ -33,9 +33,11 @@ const MovieReviewCard = (props) => {
           />
         </div>
 
-        <RatingStars
-          rating={getStreamVibeRating(props.author_details.rating)}
-        />
+        <BgBlackStrokeCard className="rounded-[999999px]">
+          <RatingStars
+            rating={getStreamVibeRating(props.author_details.rating)}
+          />
+        </BgBlackStrokeCard>
       </div>
 
       <div className="w-full">

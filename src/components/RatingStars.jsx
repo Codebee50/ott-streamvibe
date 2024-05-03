@@ -1,13 +1,13 @@
 import { HiStar } from "react-icons/hi2";
-import BgBlackStrokeCard from "./BgBlackStrokeCard";
 import TextSmVariant from "./TextSmVariant";
 
 const RatingStars = (props) => {
-  const flooredRating = Math.floor(props.rating);
-  //   const remainder = props.rating - flooredRating;
+  const classes = "flex flex-row items-center max-sm:px-2 " + props.className;
+  let flooredRating = Math.floor(props.rating);
 
+  flooredRating = flooredRating > 5 ? 5 : flooredRating; //ensuring our rating is not greater than 5
   return (
-    <BgBlackStrokeCard className="flex flex-row items-center max-sm:px-2">
+    <div className={classes}>
       {Array(flooredRating)
         .fill()
         .map((_, index) => (
@@ -30,7 +30,7 @@ const RatingStars = (props) => {
         text={flooredRating.toFixed(1)}
         className="text-[0.7rem] sm:text-sm ml-1"
       />
-    </BgBlackStrokeCard>
+    </div>
   );
 };
 

@@ -9,21 +9,27 @@ import {
   HiArrowRight,
   HiOutlineCalendar,
   HiOutlineLanguage,
+  HiOutlineStar,
 } from "react-icons/hi2";
 import DetailHeading from "../../components/DetailHeading";
 import BgBlackStrokeCard from "../../components/BgBlackStrokeCard";
 import { RiAppsLine } from "react-icons/ri";
 import CrewMember from "../../components/CrewMember";
 import RenderRatingList from "../../components/RenderRatingList";
+import RatingStars from "../../components/RatingStars";
 
 const DetailSection = (props) => {
   const [castList, setCastList] = useState([]);
   const [crewList, setCrewList] = useState([]);
   const [movieReviews, setMovieReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
   const castContainerRef = useRef();
   const releaseDate = props.movie.release_date.split("-")[0];
   const director = getMovieDirector();
   const musicEngineer = getMusicEngineer();
+
+  // calculate average rating
+  //build component to display average rating
 
   const { id } = props.movie;
   useEffect(() => {
@@ -45,7 +51,17 @@ const DetailSection = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
+        const totalRating = data.results.reduce((acc, cur) => {
+          return cur.author_details.rating + acc;
+        }, 0);
+
+        const averageRating =
+          totalRating / data.results.length <= 0 || totalRating == 0
+            ? 1
+            : totalRating / data.results.length;
         setMovieReviews(data.results);
+
+        setAverageRating(averageRating);
       });
   }, [id]);
 
@@ -158,6 +174,23 @@ const DetailSection = (props) => {
                   </p>
                 </BgBlackStrokeCard>
               ))}
+            </div>
+          </div>
+
+          {/* ratings */}
+          <div className="flex flex-col gap-2">
+            <DetailHeading icon={HiOutlineStar} text="Ratings" />
+
+            <div className="flex flex-row items-center w-full flex-wrap">
+              <BgBlackStrokeCard>
+                <p className="font-manrope text-white text-sm">TMDB</p>
+                <RatingStars rating={averageRating} className="mt-[3px]" />
+              </BgBlackStrokeCard>
+
+              <BgBlackStrokeCard>
+                <p className="font-manrope text-white text-sm">Streamvibe</p>
+                <RatingStars rating={averageRating + 1} className="mt-[3px]" />
+              </BgBlackStrokeCard>
             </div>
           </div>
 

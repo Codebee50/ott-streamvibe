@@ -30,7 +30,7 @@ const RenderRatingList = (props) => {
   useLayoutEffect(() => {
     const timer = setTimeout(() => {
       setPercentageScrolled(getPercentageScrolled(ratingsContainerRef.current));
-    }, 20);
+    }, 10);
 
     return () => {
       clearTimeout(timer);
