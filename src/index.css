@@ -35,30 +35,52 @@
 
   .solid-indicator::-webkit-progress-value {
     border-radius: 7px;
-    background-color: #E50000;
+    background-color: #e50000;
   }
 
-  .smooth{
+  .smooth {
     transition: all 1s ease-in-out;
   }
 
-  .grid-auto-con{
+  .grid-auto-con {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
   .three_lines {
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; 
+    -webkit-line-clamp: 3;
     line-height: 1.7;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
 }
 
 @layer utilities {
   .padding-x {
     @apply lg:px-16 px-6;
+  }
+
+  .half-filled-red {
+    position: relative;
+  }
+
+  .half-filled-red::before,
+  .half-filled-red::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+  }
+
+  .half-filled-red::before {
+    background-color: red;
+    left: 0;
+    z-index: 1;
+  }
+  .half-filled-red::after {
+    background-color: blue;
+    right: 0;
   }
 }

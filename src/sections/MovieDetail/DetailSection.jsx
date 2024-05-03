@@ -9,15 +9,18 @@ import {
   HiArrowRight,
   HiOutlineCalendar,
   HiOutlineLanguage,
+  HiPlus,
 } from "react-icons/hi2";
 import DetailHeading from "../../components/DetailHeading";
 import BgBlackStrokeCard from "../../components/BgBlackStrokeCard";
 import { RiAppsLine } from "react-icons/ri";
 import CrewMember from "../../components/CrewMember";
+import MovieReviewCard from "../../components/MovieReviewCard";
 
 const DetailSection = (props) => {
   const [castList, setCastList] = useState([]);
   const [crewList, setCrewList] = useState([]);
+  const [movieReviews, setMovieReviews] = useState([]);
   const castContainerRef = useRef();
   const releaseDate = props.movie.release_date.split("-")[0];
   const director = getMovieDirector();
@@ -33,6 +36,16 @@ const DetailSection = (props) => {
       .then((data) => {
         setCastList(data.cast);
         setCrewList(data.crew);
+      });
+
+    fetch(
+      `https://api.themoviedb.org/3/movie/${
+        props.movie.id
+      }/reviews?language=en&api_key=${import.meta.env.VITE_TMDP_API_TOKEN}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setMovieReviews(data.results);
       });
   }, []);
 
@@ -107,6 +120,28 @@ const DetailSection = (props) => {
                   />
                 </div>
               ))}
+          </div>
+        </DetailCard>
+
+        <DetailCard className="flex flex-col">
+          <div className="flex w-full flex-row items-center justify-between flex-wrap">
+            <TextSmVariant text="Reviews" />
+
+            <BgBlackStrokeCard className="flex flex-row items-center gap-2 sm:py-3">
+              <HiPlus className="fill-white" />
+              <p className="font-manrope text-white text-[0.75rem] sm:text-sm">
+                Add your review
+              </p>
+            </BgBlackStrokeCard>
+          </div>
+
+          <div className="w-full flex flex-col">
+            <div className="w-full flex flex-row gap-2 overflow-x-scroll no-scrollbar mt-5">
+              {movieReviews.map((review) => (
+                <MovieReviewCard key={review.id} {...review} />
+              ))}
+            </div>
+            {/* slide buttons go here */}
           </div>
         </DetailCard>
       </div>
