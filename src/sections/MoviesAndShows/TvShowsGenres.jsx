@@ -98,6 +98,7 @@ const TvShowsGenres = () => {
           id: genre.id,
           name: genre.name,
           imageLinks: posterPaths,
+          type: "tv",
         };
       })}
       component={MovieCollectionCard}

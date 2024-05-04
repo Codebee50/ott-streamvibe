@@ -24,22 +24,30 @@ const TvShowCardsm = (props) => {
 
   return (
     <a
-      className="bg-black10 h-max w-max p-4 rounded-lg"
+      className={`bg-black10 h-max w-max p-4 rounded-lg ${
+        props.resizable && "max-sm:w-full"
+      }`}
       ref={ref}
       href={getShowDetailLink(props.id)}
     >
-      <div className="rounded-lg relative flex">
-        <div className="w-max h-max">
+      <div
+        className={`rounded-lg relative flex ${
+          props.resizable && "max-sm:w-full"
+        }`}
+      >
+        <div className={`w-max h-max ${props.resizable && "max-sm:w-full"}`}>
           <img
             src={constructTmdbImageLink(props.posterPath)}
-            className="w-[253px] h-[324px] object-center object-cover rounded-lg"
+            className={`w-[253px] h-[324px] object-center object-cover rounded-lg ${
+              props.resizable && "max-sm:w-full"
+            } ${props.className}`}
             alt=""
             onError={onImageErrorHandler}
           />
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-between mt-4 mb-2">
+      <div className="flex flex-row items-center justify-between mt-4 mb-2 flex-wrap gap-2">
         <div className="bg-black08 py-2 px-2 rounded-full border-[2px] border-strokeBlack">
           <div className="flex flex-row items-center gap-1">
             <PiTelevisionSimple

@@ -4,6 +4,7 @@ import { HiStar } from "react-icons/hi";
 import { RiMovie2Line } from "react-icons/ri";
 import { PiTelevisionSimple } from "react-icons/pi";
 import { getMovieDetailLink, getShowDetailLink } from "../constants";
+import { imageErrorHandler } from "../constants";
 
 const MustWatchMovieCard = (props) => {
   const ref = useRef(null);
@@ -32,6 +33,7 @@ const MustWatchMovieCard = (props) => {
             src={constructTmdbImageLink(props.posterPath)}
             className="w-[253px] h-[324px] object-center object-cover rounded-lg"
             alt=""
+            onError={imageErrorHandler}
           />
         </div>
 

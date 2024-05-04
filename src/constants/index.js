@@ -26,6 +26,13 @@ export const constructTmdbImageLink = (path) => {
   return `https://image.tmdb.org/t/p/w500${path}`;
 };
 
+export const getGenreTvListLink = (genreId) => {
+  return `http://localhost:5173/moviesandshows?tab=genre&id=${genreId}}&content=tv&page=1`;
+};
+export const getGenreMovieListLink = (genreId) => {
+  return `http://localhost:5173/moviesandshows?tab=genre&id=${genreId}}&content=movie&page=1`;
+};
+
 export const imageErrorHandler = (event) => {
   event.target.src = defaultbg;
 };
