@@ -38,7 +38,7 @@ const SupportSection = () => {
         </div>
 
         <div className="w-full s-4:w-[60%] h-full">
-          <div className="py-10 px-10 border border-strokeBlack bg-black08 w-full h-full rounded-lg flex flex-col gap-8">
+          <div className="py-10 px-3 sm:px-10 border border-strokeBlack bg-black08 w-full h-full rounded-lg flex flex-col gap-8">
             <InputGrid className="w-full grid grid-cols-2 gap-3">
               <LabelAndInput
                 label="First Name"
@@ -59,14 +59,14 @@ const SupportSection = () => {
                     selected={selected}
                     onSelect={(code) => setSelected(code)}
                     showSelectedLabel={false}
-                    selectButtonClassName="w-[70px] p-2"
+                    selectButtonClassName="w-[70px] py-3"
                     selectedSize={14}
                     fullWidth={false}
                   />
 
                   <input
                     type="text"
-                    className="w-[50%] bg-black08 border border-strokeBlack p-4 font-manrope text-white placeholder:text-gray60 rounded-md outline-strokeBlack focus:border-strokeBlack "
+                    className="flex-grow w-[50%] bg-black08 border border-strokeBlack p-4 font-manrope text-white placeholder:text-gray60 rounded-md outline-strokeBlack focus:border-strokeBlack "
                     placeholder={"Enter Phone Number"}
                   />
                 </div>
