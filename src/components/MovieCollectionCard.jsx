@@ -7,7 +7,9 @@ const MovieCollectionCard = (props) => {
   const ref = useRef(null);
 
   const getGenreListLink = (genreId, contentType) => {
-    return `http://localhost:5173/moviesandshows?tab=genre&id=${genreId}&content=${contentType}&page=1`;
+    console.log("getting link");
+
+    return `/moviesandshows?tab=genre&id=${genreId}&content=${contentType}&page=1`;
   };
 
   useLayoutEffect(() => {
