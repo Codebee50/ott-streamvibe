@@ -1,7 +1,8 @@
 import { Fragment } from "react";
-import { ConfigProvider, Pagination } from "antd";
+import { Pagination } from "antd";
 // import TvShowCardsm from "./TvShowCardsm";
 import MovieCardSm from "./MovieCardSm";
+import AntdUiConfig from "../store/AntdUiConfig";
 
 // This component renders all the movies for a particular genre list
 const RenderGenreMovies = (props) => {
@@ -28,23 +29,7 @@ const RenderGenreMovies = (props) => {
         </div>
 
         <div className="w-full flex items-center min-h-[20vh] justify-center">
-          <ConfigProvider
-            theme={{
-              components: {
-                Pagination: {
-                  itemActiveBg: "#141414",
-                  colorText: "#999999",
-                  itemInputBg: "#141414",
-                  colorBgTextActive: "#E50000",
-                  colorPrimary: "#E50000",
-                  colorPrimaryHover: "#E50000",
-                  colorBgContainer: "#141414",
-
-                  colorTextDisabled: "#999999",
-                },
-              },
-            }}
-          >
+          <AntdUiConfig>
             <Pagination
               defaultCurrent={props.currentPage}
               total={10000}
@@ -52,7 +37,7 @@ const RenderGenreMovies = (props) => {
               onChange={onPageChange}
               pageSize={20}
             />
-          </ConfigProvider>
+          </AntdUiConfig>
         </div>
       </section>
     </Fragment>
