@@ -66,6 +66,11 @@ const ShowDetailSection = (props) => {
     return crewList.find((crew) => crew.department === "Sound");
   }
 
+  function getLanguageName(isoCode) {
+    const displayNames = new Intl.DisplayNames(["en"], { type: "language" });
+    return displayNames.of(isoCode);
+  }
+
   return (
     <section className="w-full padding-x pt-28 max-container min-h-[30vh] bg-page-black flex flex-col-reverse s-2:flex-row gap-3 pb-5">
       <div className="w-full s-2:w-[60%] flex flex-col gap-4">
@@ -94,7 +99,9 @@ const ShowDetailSection = (props) => {
       <MovieInfoCard
         overview={props.show.overview}
         releaseDate={releaseDate}
-        spoken_languages={props.show.languages}
+        spoken_languages={props.show.languages.map((lang) =>
+          getLanguageName(lang)
+        )}
         averageRating={averageRating}
         director={director}
         musicEngineer={musicEngineer}

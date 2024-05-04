@@ -68,7 +68,7 @@ const ImagesHorizonalSlider = (props) => {
   return (
     <section className={classes}>
       <div className="w-full flex flex-row items-center justify-between ">
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start max-md:px-3">
           <TextL text={props.headerText} />
           {!props.descText == "" && <TextSm text={props.descText} />}
         </div>

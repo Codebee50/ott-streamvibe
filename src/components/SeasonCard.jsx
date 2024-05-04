@@ -35,11 +35,27 @@ const SeasonCard = (props) => {
       fetch(
         `https://api.themoviedb.org/3/tv/${props.seriesId}/season/${props.season.season_number}?api_key=${TMDB_API_TOKEN}`
       )
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            setCardState("closed");
+            alert(
+              `Error fetching episodes for ${props.season.name} please try again`
+            );
+            return {};
+          }
+
+          return response.json();
+        })
         .then((data) => {
-          console.log("go", data);
           setEpisodesList(data.episodes);
           setCardState("open");
+        })
+        .catch((error) => {
+          alert(
+            `Error fetching episodes for ${props.season.name} please try again`
+          );
+          console.log(error);
+          setCardState("closed");
         });
     }
   }
