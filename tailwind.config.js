@@ -32,6 +32,7 @@ export default {
         "s-1": "320px",
         "s-2": "660px",
         "s-3": "480px",
+        "s-4": "750px",
         laptop: "1440px",
         mobile: "390px",
         tablet: "820px",

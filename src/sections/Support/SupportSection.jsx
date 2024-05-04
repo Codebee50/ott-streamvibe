@@ -14,8 +14,8 @@ const SupportSection = () => {
 
   return (
     <SectionWrapper>
-      <section className="w-full max-container min-h-[50vh] bg-page-black flex flex-row items-stretch padding-x py-20 gap-10">
-        <div className="w-[40%] flex flex-col">
+      <section className="w-full max-container min-h-[50vh] bg-page-black flex flex-col s-4:flex-row items-stretch padding-x py-20 gap-10">
+        <div className="w-full s-4:w-[40%] flex flex-col">
           <SectionHeader
             largeText="Welcome to our support page!"
             smallText="We're here to help you with any problems you may be having with our product."
@@ -37,7 +37,7 @@ const SupportSection = () => {
           </div>
         </div>
 
-        <div className="w-[60%] h-full">
+        <div className="w-full s-4:w-[60%] h-full">
           <div className="py-10 px-10 border border-strokeBlack bg-black08 w-full h-full rounded-lg flex flex-col gap-8">
             <InputGrid className="w-full grid grid-cols-2 gap-3">
               <LabelAndInput
@@ -47,31 +47,31 @@ const SupportSection = () => {
               <LabelAndInput label="Last Name" placeholder="Enter Last Name" />
             </InputGrid>
 
-            <InputGrid className="w-full grid grid-cols-2 gap-3">
+            <div className="w-full grid xl:grid-cols-2 gap-8 xl:gap-3">
               <LabelAndInput label="Email" placeholder="Enter Your Email" />
 
               <div className="w-full">
                 <p className="text-white font-manrope font-semibold">
                   Phone number
                 </p>
-                <div className="mt-2 flex flex-row w-full items-center gap-2">
+                <div className="mt-2 flex flex-row w-full items-center gap-2 flex-wrap ">
                   <ReactFlagsSelect
                     selected={selected}
                     onSelect={(code) => setSelected(code)}
                     showSelectedLabel={false}
-                    selectButtonClassName="w-[78px] p-3"
+                    selectButtonClassName="w-[70px] p-2"
                     selectedSize={14}
                     fullWidth={false}
                   />
 
                   <input
                     type="text"
-                    className="bg-black08 border border-strokeBlack p-4 font-manrope text-white placeholder:text-gray60 rounded-md outline-strokeBlack focus:border-strokeBlack "
+                    className="w-[50%] bg-black08 border border-strokeBlack p-4 font-manrope text-white placeholder:text-gray60 rounded-md outline-strokeBlack focus:border-strokeBlack "
                     placeholder={"Enter Phone Number"}
                   />
                 </div>
               </div>
-            </InputGrid>
+            </div>
 
             <div className="w-full">
               <p className="text-white font-manrope font-semibold">Message</p>
@@ -82,7 +82,7 @@ const SupportSection = () => {
               ></textarea>
             </div>
 
-            <div className="w-full flex flex-row items-center justify-between">
+            <div className="w-full flex flex-row max-[450px]:flex-col max-[450px]:items-start gap-4 items-center justify-between">
               <div>
                 <AntdUiConfig>
                   <Checkbox
