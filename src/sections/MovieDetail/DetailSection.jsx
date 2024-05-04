@@ -4,6 +4,7 @@ import TextSmVariant from "../../components/TextSmVariant";
 import RenderRatingList from "../../components/RenderRatingList";
 import MovieInfoCard from "../../components/MovieInfoCard";
 import RenderCastList from "../../components/RenderCastList";
+import SectionWrapper from "../../components/SectionWrapper";
 
 const DetailSection = (props) => {
   const [castList, setCastList] = useState([]);
@@ -67,33 +68,35 @@ const DetailSection = (props) => {
   }
 
   return (
-    <section className="w-full padding-x pt-28 max-container min-h-[30vh] bg-page-black flex flex-col-reverse s-2:flex-row gap-3 pb-5">
-      <div className="w-full s-2:w-[60%] flex flex-col gap-4">
-        <DetailCard className={"hidden s-2:flex flex-col"}>
-          <TextSmVariant text={"Description"} />
-          <TextSmVariant
-            text={props.movie.overview}
-            className={"text-white mt-2 text-[0.9rem] leading-6"}
-          />
-        </DetailCard>
+    <SectionWrapper>
+      <section className="w-full padding-x pt-28 max-container min-h-[30vh] bg-page-black flex flex-col-reverse s-2:flex-row gap-3 pb-5">
+        <div className="w-full s-2:w-[60%] flex flex-col gap-4">
+          <DetailCard className={"hidden s-2:flex flex-col"}>
+            <TextSmVariant text={"Description"} />
+            <TextSmVariant
+              text={props.movie.overview}
+              className={"text-white mt-2 text-[0.9rem] leading-6"}
+            />
+          </DetailCard>
 
-        <RenderCastList castList={castList} />
+          <RenderCastList castList={castList} />
 
-        <RenderRatingList movieReviews={movieReviews} />
-      </div>
+          <RenderRatingList movieReviews={movieReviews} />
+        </div>
 
-      <MovieInfoCard
-        overview={props.movie.overview}
-        releaseDate={releaseDate}
-        spoken_languages={props.movie.spoken_languages.map(
-          (language) => language.english_name
-        )}
-        averageRating={averageRating}
-        director={director}
-        musicEngineer={musicEngineer}
-        genres={props.movie.genres}
-      />
-    </section>
+        <MovieInfoCard
+          overview={props.movie.overview}
+          releaseDate={releaseDate}
+          spoken_languages={props.movie.spoken_languages.map(
+            (language) => language.english_name
+          )}
+          averageRating={averageRating}
+          director={director}
+          musicEngineer={musicEngineer}
+          genres={props.movie.genres}
+        />
+      </section>
+    </SectionWrapper>
   );
 };
 

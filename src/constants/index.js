@@ -213,7 +213,7 @@ export const navLinks = [
   },
   {
     label: "Support",
-    link: "#",
+    link: "/support",
   },
   {
     label: "Subscriptions",

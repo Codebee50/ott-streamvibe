@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MoviesAndShowsPage from "./pages/MoviesAndShowsPage";
-import GenreMoviesListPage from "./pages/GenreMoviesListPage";
+import SupportPage from "./pages/SupportPage";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path="/moviesandshows" element={<MoviesAndShowsPage />} />
-        <Route path="/genre/:id/:type/list" element={<GenreMoviesListPage />} />
+        <Route path="/support" element={<SupportPage />} />
       </Routes>
     </BrowserRouter>
   );
