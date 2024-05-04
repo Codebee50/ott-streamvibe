@@ -31,6 +31,7 @@ export default {
         breakcon: "450px",
         "s-1": "320px",
         "s-2": "660px",
+        "s-3": "480px",
         laptop: "1440px",
         mobile: "390px",
         tablet: "820px",

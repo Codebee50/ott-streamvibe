@@ -20,16 +20,22 @@ const MovieCardSm = (props) => {
 
   return (
     <a
-      className="bg-black10 h-max w-max p-4 rounded-lg cursor-pointer"
+      className={`bg-black10 h-max w-max p-4 rounded-lg cursor-pointer ${
+        props.resizable && "max-[480px]:w-full"
+      }`}
       ref={ref}
       href={getMovieDetailLink(props.id)}
       // onClick={openMovieDetailPage.bind(null, props.id)}
     >
       <div className="rounded-lg relative flex">
-        <div className="w-max h-max">
+        <div
+          className={`w-max h-max ${props.resizable && "max-[480px]:w-full"}`}
+        >
           <img
             src={constructTmdbImageLink(props.posterPath)}
-            className="w-[192px] h-[232px] object-center object-cover rounded-lg"
+            className={`w-[192px] h-[232px] object-center object-cover rounded-lg ${
+              props.resizable && "max-[480px]:w-full"
+            }`}
             alt=""
           />
         </div>

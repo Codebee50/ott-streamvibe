@@ -104,6 +104,7 @@ const Categories = () => {
           id: genre.id,
           name: genre.name,
           imageLinks: posterPaths,
+          type: "movie",
         };
       })}
       component={MovieCollectionCard}

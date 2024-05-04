@@ -62,6 +62,8 @@ const GenreMoviesListPage = () => {
         <RenderGenreMovies
           movieList={contentList}
           totalResults={totalResults}
+          onPageChange={onPageChangeHandler}
+          currentPage={currentPage}
         />
       ) : (
         <RenderGenreTv

@@ -4,7 +4,6 @@ import TvShowCardsm from "./TvShowCardsm";
 
 const RenderGenreTv = (props) => {
   function onPageChange(page) {
-    console.log("age", page);
     props.onPageChange(page);
   }
   return (
