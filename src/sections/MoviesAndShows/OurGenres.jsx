@@ -93,13 +93,14 @@ const OurGenres = () => {
 
   return (
     <CardBlocks
-        className="pt-[5vh] pb-[6vh]"
+      className="pt-[5vh] pb-[6vh]"
       mainList={genreList.map((genre) => {
         const posterPaths = fechPosterImagesByGenreId(genre.id);
         return {
           id: genre.id,
           name: genre.name,
           imageLinks: posterPaths,
+          type: "movie",
         };
       })}
       component={MovieCollectionCard}

@@ -17,9 +17,8 @@ const GenreMoviesListPage = () => {
   const [contentList, setContentList] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
   useEffect(() => {
-    console.log("fetching data");
     fetch(
-      `https://api.themoviedb.org/3/discover/${content}?language=en&api_key=${TMDB_API_TOKEN}&with_genre=${genreId}&page=${currentPage}`
+      `https://api.themoviedb.org/3/discover/${content}?language=en&api_key=${TMDB_API_TOKEN}&with_genres=${genreId}&page=${currentPage}`
     )
       .then((response) => {
         if (!response.ok) {

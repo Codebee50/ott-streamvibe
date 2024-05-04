@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { ConfigProvider, Pagination } from "antd";
-import TvShowCardsm from "./TvShowCardsm";
+// import TvShowCardsm from "./TvShowCardsm";
 import MovieCardSm from "./MovieCardSm";
 
 // This component renders all the movies for a particular genre list
