@@ -18,7 +18,7 @@ const NavAndDrawer = (props) => {
   return (
     <Fragment>
       <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} />
-      <section className="w-full bg-page-black">
+      <section className={`w-full ${!props.transparent && "bg-page-black"}`}>
         <Nav navLinks={navLinks} page={props.page} onOpenNav={showNavDrawer} />
       </section>
     </Fragment>

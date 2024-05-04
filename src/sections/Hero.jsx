@@ -3,28 +3,29 @@ import { useState } from "react";
 import { heroBackgroundImageList } from "../assets/heroimages";
 // import bigIcon from '../assets/icons/big-icon.png'
 import { vibeBack } from "../assets/icons";
-import Nav from "../components/Nav";
-import { navLinks } from "../constants";
+// import Nav from "../components/Nav";
+// import { navLinks } from "../constants";
 import { playIcon } from "../assets/icons";
 import { motion } from "framer-motion";
-import NavDrawer from "../components/NavDrawer";
+// import NavDrawer from "../components/NavDrawer";
+import NavAndDrawer from "../components/NavAndDrawer";
 
 const Hero = () => {
   const [shuffledList, setShuffledList] = useState([]);
-  const [navOpen, setNavOpen] = useState(false);
+  // const [navOpen, setNavOpen] = useState(false);
 
   useEffect(() => {
     const shuffled = heroBackgroundImageList.sort(() => Math.random() - 0.5);
     setShuffledList(shuffled);
   }, []);
 
-  const showNavDrawer = () => {
-    setNavOpen(true);
-  };
+  // const showNavDrawer = () => {
+  //   setNavOpen(true);
+  // };
 
-  const closeNavDrawer = () => {
-    setNavOpen(false);
-  };
+  // const closeNavDrawer = () => {
+  //   setNavOpen(false);
+  // };
 
   const getRandomX = () => {
     return (Math.random() - 0.5) * window.innerWidth;
@@ -40,7 +41,7 @@ const Hero = () => {
 
   return (
     <Fragment>
-      <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} />
+      {/* <NavDrawer open={navOpen} onClose={closeNavDrawer} navLinks={navLinks} /> */}
 
       <section className="w-full max-container bg-page-black relative">
         <div className="w-full grid h-[80vh] overflow-y-hidden gap-[5px] grid-cols-small breakcon:grid-cols-large ">
@@ -59,6 +60,7 @@ const Hero = () => {
                 rotate: 0,
               }}
               transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              viewport={{ once: true }}
             >
               <img
                 src={image}
@@ -75,7 +77,8 @@ const Hero = () => {
 
         <div className="absolute w-full z-10 top-0 flex flex-col">
           <div className="w-full h-[30vh] bg-gradient-to-b from-page-black to-trans-1">
-            <Nav navLinks={navLinks} page="Home" onOpenNav={showNavDrawer} />
+            {/* <Nav navLinks={navLinks} page="Home" onOpenNav={showNavDrawer} /> */}
+            <NavAndDrawer page={"Home"} transparent={true} />
           </div>
 
           <div className="w-full min-h-[40vh] bg-gradient-to-t from-page-black via-trans-2 from-20%  to-trans-1 flex flex-col items-center p-2">
