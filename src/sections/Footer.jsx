@@ -7,7 +7,7 @@ import SectionWrapper from "../components/SectionWrapper";
 const Footer = () => {
   return (
     <SectionWrapper>
-      <footer className="w-full pt-20  padding-x max-container bg-page-black">
+      <footer className="w-full pt-20  padding-x max-container bg-black06">
         <div className="flex flex-col">
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 pb-20 gap-14 justify-between ">
             {footerItems.map((footerItem, index) => (

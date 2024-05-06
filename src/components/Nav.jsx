@@ -9,7 +9,7 @@ const Nav = (props) => {
     <header className="w-full flex flex-row items-center justify-between padding-x pt-4">
         <img src={longLogo} alt="Streamvibe logo" className="max-laptop:w-[165px] max-mobile:w-[116px]" />
 
-        <nav className="bg-black06 pl-2 pr-6 py-4 rounded-[0.9rem] border-[3px] border-black10 max-tablet:hidden">
+        <nav className="bg-black06 pl-2 pr-2 py-4 rounded-[0.9rem] border-[3px] border-black10 max-tablet:hidden">
             <ul className="flex flex-row items-center gap-3 ">
                 {
                     props.navLinks.map((navLink)=>(

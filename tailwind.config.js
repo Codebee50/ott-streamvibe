@@ -19,6 +19,7 @@ export default {
         red45: "#E50000",
         black20: "#333333",
         black12: "#1F1F1F",
+        black15: '#262626',
         black08: "#141414",
         strokeBlack: "#262626",
       },
